@@ -1,9 +1,9 @@
-
+//stworzenie 
 public class Point {
 
 	private double x,y;
 	
-	Point()
+	Point() 
 	{
 		x = 0.0;
 		y = 0.0;
