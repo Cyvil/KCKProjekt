@@ -1,10 +1,12 @@
 import java.util.Random;
 
+// stworzenie klasy Environment, która ma byæ œrodowiskiem, map¹;
+
 public class Environment {
 
-	Point corner = new Point(100,100);
-	int landmarkArraySize = 0;
-	Landmark[] landmarkArray;
+	Point corner = new Point(100,100); // ustalenie wielkosci mapy na 100x100px
+	int landmarkArraySize = 0;			
+	Landmark[] landmarkArray;		
 	
 	Environment()
 	{
@@ -15,6 +17,7 @@ public class Environment {
 		}
 		
 		landmarkArray = new Landmark[landmarkArraySize];
+		
 		
 		for(int i = 0; i < landmarkArraySize; i++)
 		{
@@ -29,6 +32,16 @@ public class Environment {
 			
 		}
 		
+		/*
+		 * wywo³anie konstruktowa bezargumentowego klasy Environment tworzy tablicê jednowymiarow¹ o nazwie landmarkArray
+		 * wype³nion¹ obiektami typu Landmark;
+		 * iloœæ landmakrów, które maj¹ pojawiæ siê na mapie (tu: wielkoœæ tablicy landmarkArray)
+		 * generowana jest losowo, nie ma przekraczaæ 21;
+		 * tablica wype³niana jest kolejno nowo tworzonymi landmarkami, których cechy najpierw s¹ ustalane: 
+		 * pozycja(wartoœæ x i y losuje generator),
+		 * typ i kolor, wybierane z zakresu dostêpnych w danych polch mo¿liwoœci 
+		 * 
+		 */
 		
 	}
 	

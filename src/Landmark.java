@@ -1,6 +1,19 @@
 
 public class Landmark {
 	
+	/* stworzenie klasy Landmark o polach: position, type i colour; 
+	 * ka¿dy Landmark ustawiany przez nas na mapie posiada³ wiêc bêdzie trzy cechy:
+	 * typ - rodzaj przedmiotu,budynku,miejsca itp.
+	 * kolor landmarka w danym typie, poszerza gamê dostêpnych w puli generatora landmarków 
+	 * pozycjê - na bazie obiektu typu Point, wyznaczaæ bêdzie miejsce na mapie, w którym dany landmark zostanie umieszczony;
+	 * 
+	 * wywo³anie konstruktora bezargumentowego skutkuje postawieniem landmarka w formie szarego kamienia w punkcie Point=(50,50);
+	 * wywo³anie konstruktora trójargumentowego generuje losowy landmark:
+	 * 		-oblicza modulo 9 z podanej na wejœciu liczby, uzyskuj¹c liczbê typu intiger, której na sta³e odpowiada dany typ landmarku
+	 * 		-oblicza modulo 10 z kolejnej podanej na wejœciu liczby, której na sta³e przypisane zosta³y kolory z dostêpnej gamy
+	 * 		-ustawia wartoœci x i y Punktu, który bêdzie wskazywa³ miejsce umieszczenia landmarka
+	 */
+	
 	private enum Type
 	{
 		STONE, TREE, SANTA, GRAVE, WINDMILL, CHURCH, HOUSE, SIGN, STATUE, 
