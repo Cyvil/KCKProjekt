@@ -1,4 +1,4 @@
-//stworzenie klasy Point, która umo¿liwa powolanie do zycia obiektu Point o atrybutach x,y typu double; klasa prywatna
+//stworzenie klasy Point, która umo¿liwa powolanie do zycia obiektu Point o atrybutach x,y typu double; klasa publiczna
 public class Point {
 
 	private double x,y;
