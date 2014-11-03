@@ -1,6 +1,5 @@
 import java.util.Random;
 
-
 // stworzenie klasy Environment, która ma byæ œrodowiskiem, map¹;
 
 public class Environment {
@@ -22,42 +21,25 @@ public class Environment {
 		
 		for(int i = 0; i < landmarkArraySize; i++)
 		{
-			int t;
+			int t,c;
 			Point tempPoint = new Point(((double)generator.nextInt(100) + generator.nextDouble()),((double)generator.nextInt(100) + generator.nextDouble()));
 			
 			t = generator.nextInt(9);
+			c = generator.nextInt(10);
 			
-			boolean collision = true;
+			landmarkArray[i] = new Landmark(t,c,tempPoint);
 			
-			while(collision)
-			{
-				
-			tempPoint.setX((double)generator.nextInt(100) + generator.nextDouble());
-			tempPoint.setX((double)generator.nextInt(100) + generator.nextDouble());
-			
-			int collisionSum = 0;	
-				for (int j = 0; j < i; j++)
-				{
-					if (landmarkArray[j].collision(tempPoint))
-						collisionSum++;
-				}
-				
-				if (collisionSum == 0) collision = false;
-			}
-			
-			landmarkArray[i] = new Landmark(t,tempPoint);
 			
 		}
 		
 		/*
 		 * wywo³anie konstruktowa bezargumentowego klasy Environment tworzy tablicê jednowymiarow¹ o nazwie landmarkArray
 		 * wype³nion¹ obiektami typu Landmark;
-		 * iloœæ landmarków, które maj¹ pojawiæ siê na mapie (tu: wielkoœæ tablicy landmarkArray)
+		 * iloœæ landmakrów, które maj¹ pojawiæ siê na mapie (tu: wielkoœæ tablicy landmarkArray)
 		 * generowana jest losowo, nie ma przekraczaæ 21;
 		 * tablica wype³niana jest kolejno nowo tworzonymi landmarkami, których cechy najpierw s¹ ustalane: 
 		 * pozycja(wartoœæ x i y losuje generator),
-		 * przy czym po wylosownaiu pozycji nastêpuje sprawdzenie czy nie dochodzi do kolizji z innymi landmarkami
-		 * typ, wybierany z zakresu dostêpnych w danych polu mo¿liwoœci 
+		 * typ i kolor, wybierane z zakresu dostêpnych w danych polch mo¿liwoœci 
 		 * 
 		 */
 		
