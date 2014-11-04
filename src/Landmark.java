@@ -15,9 +15,9 @@ public class Landmark {
 	 * 		-ustawia wartoœci x i y Punktu, który bêdzie wskazywa³ miejsce umieszczenia landmarka
 	 */
 	
-	private enum Type
+	protected enum Type
 	{
-		STONE, TREE, SANTA, GRAVE, WINDMILL, CHURCH, HOUSE, SIGN, STATUE, 
+		STONE, TREE, SANTA, GRAVE, WINDMILL, CHURCH, HOUSE, SIGN, STATUE 
 	}
 	
 	private Type type;
@@ -98,7 +98,7 @@ public class Landmark {
 	
 	//Widocznoœæ - dla uproszczenia i realizmu zawsze jest jakby ko³em wokó³ tego obiektu o promieniu visibilityRadius
 	//¯eby sprawdziæ czy obiekt jest widoczny sprawdzamy jego odleg³oœæ od punktu w którym stoimy 
-	//Je¿eli ta odleg³oœæ jest mneijsza ni¿ promieñ widocznoœci to wtedy obiekt jest "widoczny"
+	//Je¿eli ta odleg³oœæ jest mniejsza ni¿ promieñ widocznoœci to wtedy obiekt jest "widoczny"
 	
 	boolean visibility(Point p)
 	{
