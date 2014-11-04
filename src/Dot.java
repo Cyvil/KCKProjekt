@@ -1,4 +1,4 @@
-public class Point {
+public class Dot {
 	    private int x = 0;
 	    private int y = 0;
 	    private int type = 0;
@@ -22,7 +22,7 @@ public class Point {
 	    	if (type==0) return false; else if(o-type==4||o-type==-4)return true; else return false;} //ta metoda bada, czy następny punkt nie jest generowny w tym samym miejscu co poprzedni
 	    
 	    //Constructor
-	    public Point(int a, int b, int c) {
+	    public Dot(int a, int b, int c) {
 	        x = a;
 	        y = b;
 	        type = c;

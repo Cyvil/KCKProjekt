@@ -4,12 +4,12 @@ public class Path {
 	
 	Random generator = new Random();
 	public boolean CheckOutsideMap(int x, int y) {if (x>100||x<0||y>100||y<0) return true; else return false;}
-	Point[] Table;
-	Table = new Point[20];
+	Dot[] Table;
+	Table = new Dot[20];
 	//Punkt startowy
 	int stA = generator.nextInt(20)*5; 
 	int stB = generator.nextInt(20)*5;	
-	Table[0] = new Point(stA, stB, 0);
+	Table[0] = new Dot(stA, stB, 0);
 	//Wszystkie kolejne punkty
 	for(int i=1; i<=20;i++)
 	{
@@ -25,7 +25,7 @@ public class Path {
 		OutsideMap = CheckOutsideMap(x,y);
 		if (Backtrack==false && OutsideMap==false) ValidPoint = true;
 		}
-		Table[i] = new Point(x,y,t);
+		Table[i] = new Dot(x,y,t);
 	}
 }
 
