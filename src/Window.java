@@ -44,7 +44,7 @@ public class Window extends JFrame {
 				g2d.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_ROUND,
 						BasicStroke.JOIN_ROUND));
 				g2d.setColor(Color.BLACK);
-
+				
 				path = new GeneralPath();
 
 				//generowanie sciezki
@@ -53,6 +53,7 @@ public class Window extends JFrame {
 
 					int x = Sciezka.Tables[i].getx() * 8;
 					int y = Sciezka.Tables[i].gety() * 6;
+					int c=Sciezka.Tables[i].gettype();
 					
 					//ustawnienie kropki START
 					if (i == 0) {
@@ -67,14 +68,45 @@ public class Window extends JFrame {
 					
 						//posrednie kropki sciezki
 						else {
-						path.lineTo(x, y);
-						Graphics2D kropka2d = (Graphics2D) g;
-						Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10);
-						kropka2d.setColor(Color.black);
-						kropka2d.fill(circle); // kropka przejsciowa 
-						Graphics2D napis2d = (Graphics2D) g;
-						String s = Integer.toString(i);
-						napis2d.drawString(s, x-5, y-5);
+						//path.lineTo(x, y);
+						Graphics2D luk2d = (Graphics2D) g;
+						if(i%5==0)
+						{
+							luk2d.drawArc(x, y, 100, 20, 0, 200);//(int x, int y, int width, int height, int startAngle, int arcAngle
+							Graphics2D kropka2d = (Graphics2D) g;
+							Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10);
+							kropka2d.setColor(Color.black);
+							kropka2d.fill(circle); // kropka przejsciowa 
+							Graphics2D napis2d = (Graphics2D) g;
+							String s = Integer.toString(i);
+							napis2d.drawString(s, x-5, y-5);
+						
+						} 
+						
+						if(i%5==3){
+							luk2d.drawArc(x, y, 100, 70, 0, c);//(int x, int y, int width, int height, int startAngle, int arcAngle
+							Graphics2D kropka2d = (Graphics2D) g;
+							Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10);
+							kropka2d.setColor(Color.black);
+							kropka2d.fill(circle); // kropka przejsciowa 
+							Graphics2D napis2d = (Graphics2D) g;
+							String s = Integer.toString(i);
+							napis2d.drawString(s, x-5, y-5);
+							
+						}
+						
+						else{
+							path.lineTo(x, y);
+							Graphics2D kropka2d = (Graphics2D) g;
+							Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10);
+							kropka2d.setColor(Color.black);
+							kropka2d.fill(circle); // kropka przejsciowa 
+							Graphics2D napis2d = (Graphics2D) g;
+							String s = Integer.toString(i);
+							napis2d.drawString(s, x-5, y-5);
+							}
+							
+						
 						}
 					
 					//ustawienie kropki META
