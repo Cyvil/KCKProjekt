@@ -2,23 +2,27 @@ import java.util.Random;
 
 public class Path {
 	public PointPath[] Tables;
-	public boolean CheckOutsideMap(int x, int y) {
+	public boolean CheckOutsideMap(double x, double y) {
 		if (x>100||x<0||y>100||y<0) 
 			return true; 
 		return false;
 	}
 	
+	double distance = 0;
+	
 	public Path(){
+		
 	Random generator = new Random();
 	
 	Tables = new PointPath[20];
 	//Punkt startowy
 	int stA = generator.nextInt(20)*5; 
 	int stB = generator.nextInt(20)*5;	
-	Tables[0] = new PointPath(stA, stB, 0);
+	Tables[0] = new PointPath(stA, stB, 0, 10);
 	int k = 0;
-	int x =0;
-	int y = 0;
+	double x =0;
+	double y = 0;
+	distance = 17.76594;
 	//Wszystkie kolejne punkty
 	for(int i=1; i<20;i++)
 	{
@@ -35,7 +39,7 @@ public class Path {
 			OutsideMap = CheckOutsideMap(x,y);
 			if (Backtrack==false && OutsideMap==false) ValidPoint = true;
 		}
-		Tables[i] = new PointPath(x,y,k);
+		Tables[i] = new PointPath(x,y,k,distance);
 	}
 	}
 }

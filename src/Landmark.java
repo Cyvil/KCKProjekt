@@ -136,6 +136,8 @@ public class Landmark {
 		else return visibilityRadius;
 	}
 
+	//Zwracamy punkt - a Ty myœla³eœ, ¿e co?
+	
 	Point getPoint()
 	{
 		return position;

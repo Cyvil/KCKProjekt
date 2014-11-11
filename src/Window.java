@@ -31,7 +31,7 @@ public class Window extends JFrame {
 														// okna->klikniêcie na x
 		setVisible(true); // wyswietlanie
 		setSize(800, 600);
-		// setResizable(false); // nie mozna rozciagnac okna
+		setResizable(false); // nie mozna rozciagnac okna
 
 		setBackground(Color.WHITE);
 
@@ -49,8 +49,8 @@ public class Window extends JFrame {
 
 				for (int i = 0; i < 20; i++) {
 
-					int x = Sciezka.Tables[i].getx() * 8;
-					int y = Sciezka.Tables[i].gety() * 6;
+					double x = Sciezka.Tables[i].getx() * 8;
+					double y = Sciezka.Tables[i].gety() * 6;
 					if (i == 0) {
 						path.moveTo(x, y);
 						Graphics2D kropka2d = (Graphics2D) g;
@@ -59,7 +59,7 @@ public class Window extends JFrame {
 						kropka2d.setColor(Color.GREEN); // ustawienie koloru
 						kropka2d.fill(circle); // wypelnianie
 						Graphics2D napis2d = (Graphics2D) g;
-						napis2d.drawString("START", x - 5, y - 5);
+						napis2d.drawString("START", (int)x - 5, (int)y - 5);
 					} else {
 						path.lineTo(x, y);
 					}
@@ -69,7 +69,7 @@ public class Window extends JFrame {
 						kropka2d.setColor(Color.red);
 						kropka2d.fill(circle); // kropka mety
 						Graphics2D napis2d = (Graphics2D) g;
-						napis2d.drawString("META", x - 5, y - 5);
+						napis2d.drawString("META", (int)x - 5, (int)y - 5);
 						g2d.setColor(Color.BLACK);// kolor sciezki
 					}
 				}
