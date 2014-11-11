@@ -16,10 +16,10 @@ public class Window extends JFrame {
 
 	private Path Sciezka;
 	private Image TREE = Toolkit.getDefaultToolkit().getImage("img/tree.png");
-	private Image STONE = Toolkit.getDefaultToolkit().getImage("img/stone.jpg");
+	private Image STONE = Toolkit.getDefaultToolkit().getImage("img/stone.png");
 	private Image SANTA = Toolkit.getDefaultToolkit().getImage("img/santa.png");
 	private Image WINDMILL = Toolkit.getDefaultToolkit().getImage("img/windmill.png");
-	private Image STATUE = Toolkit.getDefaultToolkit().getImage("img/statue.jpg");
+	private Image STATUE = Toolkit.getDefaultToolkit().getImage("img/statue.png");
 	private Image CHURCH = Toolkit.getDefaultToolkit().getImage("img/church.png");
 	private Image SIGN = Toolkit.getDefaultToolkit().getImage("img/sign.png");
 	private Image HOUSE = Toolkit.getDefaultToolkit().getImage("img/house.png");
@@ -103,7 +103,7 @@ public class Window extends JFrame {
 			if (environment.landmarkArray[i].getType() == Landmark.Type.TREE)
 				landmarki2d.drawImage(TREE, a, b, 30, 30, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.STONE)
-				landmarki2d.drawImage(STONE, a, b, 25, 25, this);
+				landmarki2d.drawImage(STONE, a, b, 30, 30, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.SANTA)
 				landmarki2d.drawImage(SANTA, a, b, 25, 25, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.WINDMILL)
@@ -113,7 +113,7 @@ public class Window extends JFrame {
 			if (environment.landmarkArray[i].getType() == Landmark.Type.HOUSE)
 				landmarki2d.drawImage(HOUSE, a, b, 45, 45, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.STATUE)
-				landmarki2d.drawImage(STATUE, a, b, 25, 25, this);
+				landmarki2d.drawImage(STATUE, a, b, 40, 40, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.SIGN)
 				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
 			

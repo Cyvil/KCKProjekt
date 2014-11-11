@@ -7,7 +7,7 @@ public class Dot {
 	    public int gety() {return y;}
 	    public int gettype() {return type;}
 	    
-	    //dwie następne metody generują następny punkt w 8 możliwych kierunkach (w praktyce możliwych jest 7)
+	    //dwie nastepne metody generuja nastepny punkt w 8 mozliwych kierunkach (w praktyce możliwych jest 7)
 	    public int gennextx(int o) {
 	    	if(o==1||o==8||o==7) return x-5;
 	    	else if (o==2||o==6) return x;

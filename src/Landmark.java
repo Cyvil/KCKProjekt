@@ -17,7 +17,7 @@ public class Landmark {
 	
 	protected enum Type
 	{
-		STONE, TREE, SANTA, GRAVE, WINDMILL, CHURCH, HOUSE, SIGN, STATUE 
+		STONE, TREE, SANTA, WINDMILL, CHURCH, HOUSE, SIGN, STATUE 
 	}
 	
 	private Type type;
@@ -63,10 +63,10 @@ public class Landmark {
 			type = Type.SANTA;
 			visibilityRadius = 10.0;
 			break;
-		case 3:
+		/*case 3:
 			type = Type.GRAVE;
 			visibilityRadius = 10.0;
-			break;
+			break;*/
 		case 4:
 			type = Type.WINDMILL;
 			visibilityRadius = 20.0;
