@@ -47,22 +47,37 @@ public class Window extends JFrame {
 
 				path = new GeneralPath();
 
-				for (int i = 0; i < 20; i++) {
+				//generowanie sciezki
+				
+				for (int i = 0; i < 20; i++) {		
 
 					int x = Sciezka.Tables[i].getx() * 8;
 					int y = Sciezka.Tables[i].gety() * 6;
+					
+					//ustawnienie kropki START
 					if (i == 0) {
 						path.moveTo(x, y);
 						Graphics2D kropka2d = (Graphics2D) g;
-						Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10); // tworzenie kolka o danej
-												// wielkosci
+						Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10); // tworzenie kolka o danej wielkosci
 						kropka2d.setColor(Color.GREEN); // ustawienie koloru
 						kropka2d.fill(circle); // wypelnianie
 						Graphics2D napis2d = (Graphics2D) g;
 						napis2d.drawString("START", x - 5, y - 5);
-					} else {
+					} 
+					
+						//posrednie kropki sciezki
+						else {
 						path.lineTo(x, y);
-					}
+						Graphics2D kropka2d = (Graphics2D) g;
+						Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10);
+						kropka2d.setColor(Color.black);
+						kropka2d.fill(circle); // kropka przejsciowa 
+						Graphics2D napis2d = (Graphics2D) g;
+						String s = Integer.toString(i);
+						napis2d.drawString(s, x-5, y-5);
+						}
+					
+					//ustawienie kropki META
 					if (i == 19) {
 						Graphics2D kropka2d = (Graphics2D) g;
 						Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10);
@@ -73,8 +88,8 @@ public class Window extends JFrame {
 						g2d.setColor(Color.BLACK);// kolor sciezki
 					}
 				}
-				g2d.draw(path); // rysowanie drogi
 				
+				g2d.draw(path); // rysowanie drogi
 				drawLandmarks(g);	// rysowanie landmarkow
 				
 			}
@@ -82,7 +97,7 @@ public class Window extends JFrame {
 
 		add(panel); // dodanie rysowania sciezki do okna
 
-		// tworzenie sciezki
+		// wypisanie sciezki
 		Sciezka = new Path();
 		for (int i = 0; i < 20; i++) {
 			System.out.println("Punkt nr:" + i + " x="
@@ -92,6 +107,7 @@ public class Window extends JFrame {
 
 	}
 
+	//metoda na landmarki
 	private void drawLandmarks(Graphics g) {
 		Graphics2D landmarki2d = (Graphics2D) g; // rysowanie landmarkow
 		Environment environment = new Environment();
@@ -117,7 +133,7 @@ public class Window extends JFrame {
 			if (environment.landmarkArray[i].getType() == Landmark.Type.SIGN)
 				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
 			
-
+			//wyswietlanie pomocnicze rozlozenia landmarkow na mapie
 			System.out.println("Landmark " + i + ": "
 					+ environment.landmarkArray[i].getType()
 					+ " pozycja : x = "
