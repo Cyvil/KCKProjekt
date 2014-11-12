@@ -16,10 +16,10 @@ public class Window extends JFrame {
 
 	private Path Sciezka;
 	private Image TREE = Toolkit.getDefaultToolkit().getImage("img/tree.png");
-	private Image STONE = Toolkit.getDefaultToolkit().getImage("img/stone.jpg");
+	private Image STONE = Toolkit.getDefaultToolkit().getImage("img/stone.png");
 	private Image SANTA = Toolkit.getDefaultToolkit().getImage("img/santa.png");
 	private Image WINDMILL = Toolkit.getDefaultToolkit().getImage("img/windmill.png");
-	private Image STATUE = Toolkit.getDefaultToolkit().getImage("img/statue.jpg");
+	private Image STATUE = Toolkit.getDefaultToolkit().getImage("img/statue.png");
 	private Image CHURCH = Toolkit.getDefaultToolkit().getImage("img/church.png");
 	private Image SIGN = Toolkit.getDefaultToolkit().getImage("img/sign.png");
 	private Image HOUSE = Toolkit.getDefaultToolkit().getImage("img/house.png");
@@ -31,7 +31,7 @@ public class Window extends JFrame {
 														// okna->klikniêcie na x
 		setVisible(true); // wyswietlanie
 		setSize(800, 600);
-		// setResizable(false); // nie mozna rozciagnac okna
+		 setResizable(false); // nie mozna rozciagnac okna
 
 		setBackground(Color.WHITE);
 
@@ -48,7 +48,7 @@ public class Window extends JFrame {
 				path = new GeneralPath();
 
 				//generowanie sciezki
-				
+/*				
 				for (int i = 0; i < 20; i++) {		
 
 					int x = Sciezka.Tables[i].getx() * 8;
@@ -120,6 +120,81 @@ public class Window extends JFrame {
 						g2d.setColor(Color.BLACK);// kolor sciezki
 					}
 				}
+*/
+				
+				for (int i = 0; i < 15; i++) {		
+
+					int x = (int)Sciezka.Tables[i].getx() * 8;
+					int y = (int)Sciezka.Tables[i].gety() * 6;
+					int c=Sciezka.Tables[i].gettype();
+					
+					//ustawnienie kropki START
+					if (i == 0) {
+						path.moveTo(x, y);
+						Graphics2D kropka2d = (Graphics2D) g;
+						Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10); // tworzenie kolka o danej wielkosci
+						kropka2d.setColor(Color.GREEN); // ustawienie koloru
+						kropka2d.fill(circle); // wypelnianie
+						Graphics2D napis2d = (Graphics2D) g;
+						napis2d.drawString("START", x - 5, y - 5);
+					} 
+					
+						//posrednie kropki sciezki
+						else {
+						//path.lineTo(x, y);
+						//Graphics2D luk2d = (Graphics2D) g;
+						if(i%5==0)
+						{
+							/*luk2d.drawArc(x, y, 100, 20, 0, 200);//(int x, int y, int width, int height, int startAngle, int arcAngle*/
+							path.lineTo(x, y);
+							Graphics2D kropka2d = (Graphics2D) g;
+							Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10);
+							kropka2d.setColor(Color.black);
+							kropka2d.fill(circle); // kropka przejsciowa 
+							Graphics2D napis2d = (Graphics2D) g;
+							String s = Integer.toString(i);
+							napis2d.drawString(s, x-5, y-5);
+						
+						} 
+						
+						if(i%5==3){
+							path.lineTo(x, y);
+							//luk2d.drawArc(x, y, 100, 70, 0, c);//(int x, int y, int width, int height, int startAngle, int arcAngle
+							Graphics2D kropka2d = (Graphics2D) g;
+							Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10);
+							kropka2d.setColor(Color.black);
+							kropka2d.fill(circle); // kropka przejsciowa 
+							Graphics2D napis2d = (Graphics2D) g;
+							String s = Integer.toString(i);
+							napis2d.drawString(s, x-5, y-5);
+							
+						}
+						
+						else{
+							path.lineTo(x, y);
+							Graphics2D kropka2d = (Graphics2D) g;
+							Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10);
+							kropka2d.setColor(Color.black);
+							kropka2d.fill(circle); // kropka przejsciowa 
+							Graphics2D napis2d = (Graphics2D) g;
+							String s = Integer.toString(i);
+							napis2d.drawString(s, x-5, y-5);
+							}
+							
+						
+						}
+					
+					//ustawienie kropki META
+					if (i == 14) {
+						Graphics2D kropka2d = (Graphics2D) g;
+						Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10);
+						kropka2d.setColor(Color.red);
+						kropka2d.fill(circle); // kropka mety
+						Graphics2D napis2d = (Graphics2D) g;
+						napis2d.drawString("META", x - 5, y - 5);
+						g2d.setColor(Color.BLACK);// kolor sciezki
+					}
+				}
 				
 				g2d.draw(path); // rysowanie drogi
 				drawLandmarks(g);	// rysowanie landmarkow
@@ -131,7 +206,7 @@ public class Window extends JFrame {
 
 		// wypisanie sciezki
 		Sciezka = new Path();
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 15; i++) {
 			System.out.println("Punkt nr:" + i + " x="
 					+ Sciezka.Tables[i].getx() + " y="
 					+ Sciezka.Tables[i].gety());
@@ -161,7 +236,7 @@ public class Window extends JFrame {
 			if (environment.landmarkArray[i].getType() == Landmark.Type.HOUSE)
 				landmarki2d.drawImage(HOUSE, a, b, 45, 45, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.STATUE)
-				landmarki2d.drawImage(STATUE, a, b, 25, 25, this);
+				landmarki2d.drawImage(STATUE, a, b, 40, 40, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.SIGN)
 				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
 			

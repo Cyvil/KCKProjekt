@@ -12,10 +12,12 @@ public class Environment {
 	Environment()
 	{
 		Random generator = new Random();
-		while(landmarkArraySize < 15)
-		{
-			landmarkArraySize = generator.nextInt(21);
-		}
+//		while(landmarkArraySize < 15)
+//		{
+//			landmarkArraySize = generator.nextInt(21);
+//		}
+		
+		landmarkArraySize = 15;
 		
 		landmarkArray = new Landmark[landmarkArraySize];
 		
@@ -23,7 +25,7 @@ public class Environment {
 		for(int i = 0; i < landmarkArraySize; i++)
 		{
 			int t;
-			Point tempPoint = new Point(((double)generator.nextInt(100) + generator.nextDouble()),((double)generator.nextInt(100) + generator.nextDouble()));
+			Point tempPoint = new Point((double)generator.nextInt(100),(double)generator.nextInt(100));
 			
 			t = generator.nextInt(9);
 			

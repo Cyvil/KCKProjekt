@@ -64,8 +64,8 @@ public class Landmark {
 			visibilityRadius = 10.0;
 			break;
 		case 3:
-			type = Type.GRAVE;
-			visibilityRadius = 10.0;
+			type = Type.TREE;
+			visibilityRadius = 15.0;
 			break;
 		case 4:
 			type = Type.WINDMILL;
