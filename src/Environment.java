@@ -25,7 +25,7 @@ public class Environment {
 		for(int i = 0; i < landmarkArraySize; i++)
 		{
 			int t;
-			Point tempPoint = new Point((double)generator.nextInt(100),(double)generator.nextInt(100));
+			Point tempPoint = new Point((double)generator.nextInt(800),(double)generator.nextInt(600));
 			
 			t = generator.nextInt(9);
 			
@@ -34,8 +34,8 @@ public class Environment {
 			while(collision)
 			{
 				
-			tempPoint.setX((double)generator.nextInt(100) + generator.nextDouble());
-			tempPoint.setX((double)generator.nextInt(100) + generator.nextDouble());
+			tempPoint.setX((double)generator.nextInt(800) + generator.nextDouble());
+			tempPoint.setY((double)generator.nextInt(600) + generator.nextDouble());
 			
 			int collisionSum = 0;	
 				for (int j = 0; j < i; j++)

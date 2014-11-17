@@ -124,8 +124,8 @@ public class Window extends JFrame {
 				
 				for (int i = 0; i < 15; i++) {		
 
-					int x = (int)Sciezka.Tables[i].getx() * 8;
-					int y = (int)Sciezka.Tables[i].gety() * 6;
+					int x = (int)Sciezka.Tables[i].getx();
+					int y = (int)Sciezka.Tables[i].gety();
 					int c=Sciezka.Tables[i].gettype();
 					
 					//ustawnienie kropki START
@@ -142,11 +142,11 @@ public class Window extends JFrame {
 						//posrednie kropki sciezki
 						else {
 						//path.lineTo(x, y);
-						//Graphics2D luk2d = (Graphics2D) g;
+						Graphics2D luk2d = (Graphics2D) g;
 						if(i%5==0)
 						{
-							/*luk2d.drawArc(x, y, 100, 20, 0, 200);//(int x, int y, int width, int height, int startAngle, int arcAngle*/
-							path.lineTo(x, y);
+							luk2d.drawArc(x, y, 100, 20, 0, 200);//(int x, int y, int width, int height, int startAngle, int arcAngle
+							//path.lineTo(x, y);
 							Graphics2D kropka2d = (Graphics2D) g;
 							Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10);
 							kropka2d.setColor(Color.black);
@@ -158,8 +158,8 @@ public class Window extends JFrame {
 						} 
 						
 						if(i%5==3){
-							path.lineTo(x, y);
-							//luk2d.drawArc(x, y, 100, 70, 0, c);//(int x, int y, int width, int height, int startAngle, int arcAngle
+							//path.lineTo(x, y);
+							luk2d.drawArc(x, y, 100, 70, 0, c);//(int x, int y, int width, int height, int startAngle, int arcAngle
 							Graphics2D kropka2d = (Graphics2D) g;
 							Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10);
 							kropka2d.setColor(Color.black);
@@ -195,9 +195,9 @@ public class Window extends JFrame {
 						g2d.setColor(Color.BLACK);// kolor sciezki
 					}
 				}
-				
-				g2d.draw(path); // rysowanie drogi
 				drawLandmarks(g);	// rysowanie landmarkow
+				g2d.draw(path); // rysowanie drogi
+				
 				
 			}
 		};
@@ -220,8 +220,8 @@ public class Window extends JFrame {
 		Environment environment = new Environment();
 		for (int i = 0; i < environment.landmarkArraySize; i++) {
 
-			int a = (int) environment.landmarkArray[i].getPoint().getX()*8;
-			int b = (int) environment.landmarkArray[i].getPoint().getY()*6;
+			int a = (int) environment.landmarkArray[i].getPoint().getX();
+			int b = (int) environment.landmarkArray[i].getPoint().getY();
 
 			if (environment.landmarkArray[i].getType() == Landmark.Type.TREE)
 				landmarki2d.drawImage(TREE, a, b, 30, 30, this);

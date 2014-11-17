@@ -3,7 +3,7 @@ import java.util.Random;
 public class Path {
 	public PointPath[] Tables;
 	public boolean CheckOutsideMap(double x, double y) {
-		if (x>100||x<0||y>100||y<0) 
+		if (x>800||x<10||y>600||y<10) 
 			return true; 
 		return false;
 	}
@@ -12,10 +12,10 @@ public class Path {
 	Random generator = new Random();
 	
 	Tables = new PointPath[20];
-	double distance = 20.0;
+	double distance = 100.0;
 	//Punkt startowy
-	int stA = generator.nextInt(20)*5; 
-	int stB = generator.nextInt(20)*5;	
+	double stA = (double)generator.nextInt(780)+10; 
+	double stB = (double)generator.nextInt(780)+10;	
 	Tables[0] = new PointPath(stA, stB, 0, distance);
 	int k = 0;
 	double x =0;
