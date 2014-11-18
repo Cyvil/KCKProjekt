@@ -8,6 +8,8 @@ import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
+import java.awt.geom.QuadCurve2D;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -23,11 +25,12 @@ public class Window extends JFrame {
 	private Image CHURCH = Toolkit.getDefaultToolkit().getImage("img/church.png");
 	private Image SIGN = Toolkit.getDefaultToolkit().getImage("img/sign.png");
 	private Image HOUSE = Toolkit.getDefaultToolkit().getImage("img/house.png");
+	public boolean isDrew = true;
 	
 	public Window() {
 		super("Find me"); // nazwa okienka -> pasek
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // ustawienie opcji
-														// zmykania
+													// zmykania
 														// okna->klikniêcie na x
 		setVisible(true); // wyswietlanie
 		setSize(800, 600);
@@ -123,9 +126,11 @@ public class Window extends JFrame {
 */
 				
 				for (int i = 0; i < 15; i++) {		
-
+					System.out.print(Sciezka.Tables[i].getx());
 					int x = (int)Sciezka.Tables[i].getx();
+					
 					int y = (int)Sciezka.Tables[i].gety();
+
 					int c=Sciezka.Tables[i].gettype();
 					
 					//ustawnienie kropki START
@@ -140,12 +145,35 @@ public class Window extends JFrame {
 					} 
 					
 						//posrednie kropki sciezki
+					else {
+						int x_begin = (int)Sciezka.Tables[i-1].getx();
+						int y_begin = (int)Sciezka.Tables[i-1].gety();
+						Random rn = new Random();
+						int los=rn.nextInt();
+						//Graphics2D luk2d = (Graphics2D) g;
+						
+						if(los%8==0 || los%8==5 || los%8==6 || los%8==7)
+							{path.lineTo(x_begin, y_begin);}
+						
 						else {
-						//path.lineTo(x, y);
-						Graphics2D luk2d = (Graphics2D) g;
-						if(i%5==0)
-						{
-							luk2d.drawArc(x, y, 100, 20, 0, 200);//(int x, int y, int width, int height, int startAngle, int arcAngle
+							if(los%8==1){
+								QuadCurve2D quadcurve = new QuadCurve2D.Float(x_begin,y_begin, (x_begin+x)/5, (y_begin+y)/15, x, y);
+								g2d.draw(quadcurve);
+								}
+						    if(los%8==2){
+								QuadCurve2D quadcurve = new QuadCurve2D.Float(x_begin,y_begin, -(x_begin+x)/5, (y_begin+y)/15, x, y);
+							    g2d.draw(quadcurve);
+						    }
+						    if(los%8==3){
+								QuadCurve2D quadcurve = new QuadCurve2D.Float(x_begin,y_begin,(x_begin+x)/10, (y_begin+y)/15, x, y);
+							    g2d.draw(quadcurve);
+						    }
+						    if(los%8==4){
+								QuadCurve2D quadcurve = new QuadCurve2D.Float(x_begin,y_begin, -(x_begin+x)/5, (y_begin+y)/15, x, y);
+							    g2d.draw(quadcurve);
+						    }
+							//luk2d.curveTo(x_begin,y_begin, 50.0f, 25, x, y);
+							//luk2d.drawArc(x, y, 100, 20, 0, 200);//(int x, int y, int width, int height, int startAngle, int arcAngle
 							//path.lineTo(x, y);
 							Graphics2D kropka2d = (Graphics2D) g;
 							Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10);
@@ -154,33 +182,7 @@ public class Window extends JFrame {
 							Graphics2D napis2d = (Graphics2D) g;
 							String s = Integer.toString(i);
 							napis2d.drawString(s, x-5, y-5);
-						
-						} 
-						
-						if(i%5==3){
-							//path.lineTo(x, y);
-							luk2d.drawArc(x, y, 100, 70, 0, c);//(int x, int y, int width, int height, int startAngle, int arcAngle
-							Graphics2D kropka2d = (Graphics2D) g;
-							Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10);
-							kropka2d.setColor(Color.black);
-							kropka2d.fill(circle); // kropka przejsciowa 
-							Graphics2D napis2d = (Graphics2D) g;
-							String s = Integer.toString(i);
-							napis2d.drawString(s, x-5, y-5);
-							
 						}
-						
-						else{
-							path.lineTo(x, y);
-							Graphics2D kropka2d = (Graphics2D) g;
-							Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10);
-							kropka2d.setColor(Color.black);
-							kropka2d.fill(circle); // kropka przejsciowa 
-							Graphics2D napis2d = (Graphics2D) g;
-							String s = Integer.toString(i);
-							napis2d.drawString(s, x-5, y-5);
-							}
-							
 						
 						}
 					
@@ -195,7 +197,7 @@ public class Window extends JFrame {
 						g2d.setColor(Color.BLACK);// kolor sciezki
 					}
 				}
-				drawLandmarks(g);	// rysowanie landmarkow
+				drawLandmarks(g);
 				g2d.draw(path); // rysowanie drogi
 				
 				
@@ -241,7 +243,7 @@ public class Window extends JFrame {
 				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
 			
 			//wyswietlanie pomocnicze rozlozenia landmarkow na mapie
-			System.out.println("Landmark " + i + ": "
+		/*	System.out.println("Landmark " + i + ": "
 					+ environment.landmarkArray[i].getType()
 					+ " pozycja : x = "
 					+ environment.landmarkArray[i].getPoint().getX() + " y = "
@@ -250,7 +252,7 @@ public class Window extends JFrame {
 					+ environment.landmarkArray[i].getRadius(false)
 					+ " Kolizja :"
 					+ environment.landmarkArray[i].getRadius(true));
-					
+				*/	
 		}
 		landmarki2d.finalize();
 	}
