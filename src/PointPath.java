@@ -1,14 +1,17 @@
 import java.lang.Math;
+import java.util.Random;
 
 public class PointPath {
 	    private double x = 0;
 	    private double y = 0;
 	    private int type = 0;
 	    private double distance = 0;
+	    private int curve = 0;
 	    
 	    public double getx() {return x;}
 	    public double gety() {return y;}
 	    public int gettype() {return type;}
+	    public int getcurve() {return curve;}
 	    
 	    //dwie nastepne metody generuja nastepny punkt w 8 mozliwych kierunkach (w praktyce mozliwych jest 7)
 	    public double gennextx(int o) {
@@ -38,11 +41,12 @@ public class PointPath {
 	    //ta metoda bada, czy nastepny punkt nie jest generowny w tym samym miejscu co poprzedni
 	        	    
 	    //Constructor
-	    public PointPath(double a, double b, int c, double d) {
+	    public PointPath(double a, double b, int c, double d, int e) {
 	        x = a;
 	        y = b;
 	        type = c;
 	        distance = d;
+	        curve = e;
 	    }
 	}
 	
