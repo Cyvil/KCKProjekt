@@ -34,11 +34,12 @@ public class Path {
 			k = generator.nextInt(8)+1;
 			x = Tables[i-1].gennextx(k);
 			y = Tables[i-1].gennexty(k);
+			z= gengenerator.nextInt(5)+1;
 			Backtrack = Tables[i-1].Backtrack(k);
 			OutsideMap = CheckOutsideMap(x,y);
 			if (Backtrack==false && OutsideMap==false) ValidPoint = true;
 		}
-		Tables[i] = new PointPath(x,y,k,distance);
+		Tables[i] = new PointPath(x,y,k,distance,z);
 	}
 	}
 }
