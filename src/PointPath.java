@@ -1,5 +1,4 @@
 import java.lang.Math;
-import java.util.Random;
 
 public class PointPath {
 	    private double x = 0;
