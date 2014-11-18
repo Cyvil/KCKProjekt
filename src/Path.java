@@ -27,11 +27,10 @@ public class Path {
 	for(int i=1; i<20;i++)
 	{
 		boolean ValidPoint = false;
-		boolean Backtrack = true;
-		boolean OutsideMap = true;
 		
 		while(ValidPoint==false) {
-			//na razie sprawdza tylko czy nastepny punkt nie pokrywa sie z poprzednim i czy nie wychodzi poza mapa
+			boolean Backtrack = true;
+			boolean OutsideMap = true;
 			k = generator.nextInt(8)+1;
 			x = Tables[i-1].gennextx(k);
 			y = Tables[i-1].gennexty(k);
