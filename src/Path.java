@@ -27,14 +27,15 @@ public class Path {
 	for(int i=1; i<20;i++)
 	{
 		boolean ValidPoint = false;
-		
+		boolean Backtrack = true;
+		boolean OutsideMap = true;
 		while(ValidPoint==false) {
-			boolean Backtrack = true;
-			boolean OutsideMap = true;
+			Backtrack = true;
+			OutsideMap = true;
 			k = generator.nextInt(8)+1;
 			x = Tables[i-1].gennextx(k);
 			y = Tables[i-1].gennexty(k);
-			z= gengenerator.nextInt(5)+1;
+			z= generator.nextInt(5)+1;
 			Backtrack = Tables[i-1].Backtrack(k);
 			OutsideMap = CheckOutsideMap(x,y);
 			if (Backtrack==false && OutsideMap==false) ValidPoint = true;
