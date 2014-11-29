@@ -41,16 +41,17 @@ public class Window extends JFrame {
 				Graphics2D g2d = (Graphics2D) g;
 				g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 						RenderingHints.VALUE_ANTIALIAS_ON);
-				g2d.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_ROUND,
+				g2d.setStroke(new BasicStroke(2.0f, BasicStroke.CAP_ROUND,
 						BasicStroke.JOIN_ROUND));
 				g2d.setColor(Color.BLACK);
 
 				path = new GeneralPath();
 
+				
 				for (int i = 0; i < 20; i++) {
 
-					double x = Sciezka.Tables[i].getx() * 8;
-					double y = Sciezka.Tables[i].gety() * 6;
+					double x = Sciezka.Tables[i].getx();
+					double y = Sciezka.Tables[i].gety();
 					if (i == 0) {
 						path.moveTo(x, y);
 						Graphics2D kropka2d = (Graphics2D) g;
