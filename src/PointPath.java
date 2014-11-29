@@ -5,10 +5,12 @@ public class PointPath {
 	    private double y = 0;
 	    private int type = 0;
 	    private double distance = 0;
+	    private int curve = 0;
 	    
 	    public double getx() {return x;}
 	    public double gety() {return y;}
 	    public int gettype() {return type;}
+	    public int getcurve() {return curve;}
 	    
 	    //dwie nastepne metody generuja nastepny punkt w 8 mozliwych kierunkach (w praktyce mozliwych jest 7)
 	    public double gennextx(int o) {
@@ -34,14 +36,15 @@ public class PointPath {
 			return -1;
 	    }
 	    public boolean Backtrack(int o){
-	    	if (type==0) return false; else if(o-type==4||o-type==-4||o-type==3||o-type==-3)return true; else return false;} 
+	    	if (type==0) return false; else if(o-type==4||o-type==-4)return true; else return false;} 
 	    //ta metoda bada, czy nastepny punkt nie jest generowny w tym samym miejscu co poprzedni
 	        	    
 	    //Constructor
-	    public PointPath(double a, double b, int c, double d) {
+	    public PointPath(double a, double b, int c, double d, int e) {
 	        x = a;
 	        y = b;
 	        type = c;
 	        distance = d;
+	        curve = e;
 	    }
 	}

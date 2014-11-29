@@ -37,6 +37,7 @@ public class Window extends JFrame {
 		 setResizable(false); // nie mozna rozciagnac okna
 
 		setBackground(Color.WHITE);
+		
 
 		JPanel panel = new JPanel() {
 			protected void paintComponent(Graphics g) {
@@ -44,34 +45,97 @@ public class Window extends JFrame {
 				Graphics2D g2d = (Graphics2D) g;
 				g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 						RenderingHints.VALUE_ANTIALIAS_ON);
-				g2d.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_ROUND,
+				g2d.setStroke(new BasicStroke(2.0f, BasicStroke.CAP_ROUND,
 						BasicStroke.JOIN_ROUND));
 				g2d.setColor(Color.BLACK);
 				
 				path = new GeneralPath();
 
 				//generowanie sciezki
-/*				
+				
 				for (int i = 0; i < 20; i++) {		
 
-					int x = Sciezka.Tables[i].getx() * 8;
-					int y = Sciezka.Tables[i].gety() * 6;
-					int c=Sciezka.Tables[i].gettype();
+					int x = (int)Sciezka.Tables[i].getx() * 8;
+					int y = (int)Sciezka.Tables[i].gety() * 6;
+					
+					
+					//int c=Sciezka.Tables[i].gettype();
+					int z = Sciezka.Tables[i].getcurve();
+					
+					
+					Graphics2D kropka2d = (Graphics2D) g;
+					Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10);
+					kropka2d.fill(circle); // kropka przejsciowa 
+					Graphics2D napis2d = (Graphics2D) g;
+					
 					
 					//ustawnienie kropki START
 					if (i == 0) {
-						path.moveTo(x, y);
-						Graphics2D kropka2d = (Graphics2D) g;
-						Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10); // tworzenie kolka o danej wielkosci
-						kropka2d.setColor(Color.GREEN); // ustawienie koloru
-						kropka2d.fill(circle); // wypelnianie
-						Graphics2D napis2d = (Graphics2D) g;
-						napis2d.drawString("START", x - 5, y - 5);
-					} 
+							path.moveTo(x, y);					
+							kropka2d.setColor(Color.GREEN); // ustawienie koloru					
+							napis2d.drawString("START", x - 5, y - 5);	
+						} 
+					
+					//ustawienie kropki META
+					if (i == 19) {
+					
+							kropka2d.setColor(Color.red);											
+							napis2d.drawString("META", x - 5, y - 5);
+							g2d.setColor(Color.BLACK);// kolor sciezki
+						}
 					
 						//posrednie kropki sciezki
 						else {
-						//path.lineTo(x, y);
+							
+							if(i>0){
+							int x_begin = (int)Sciezka.Tables[i-1].getx()*8;
+							int y_begin = (int)Sciezka.Tables[i-1].gety()*6;
+							
+							if(z==0 || z==5){
+								path.lineTo(x, y);
+								kropka2d.setColor(Color.black);
+								String s = Integer.toString(i);
+								napis2d.drawString(s, x-5, y-5);												
+							}
+							
+							if(z==1){
+								QuadCurve2D quadcurve = new QuadCurve2D.Double(x_begin,y_begin, 100, 170, x, y);
+								g2d.draw(quadcurve);
+								kropka2d.setColor(Color.black);
+								String s = Integer.toString(i);
+								napis2d.drawString(s, x-5, y-5);
+							}
+							
+							if(z==2){
+								QuadCurve2D quadcurve = new QuadCurve2D.Double(x_begin,y_begin, 100, -170, x, y);
+								g2d.draw(quadcurve);
+								kropka2d.setColor(Color.black);
+								String s = Integer.toString(i);
+								napis2d.drawString(s, x-5, y-5);								
+							}
+							if(z==3){
+								//QuadCurve2D quadcurve = new QuadCurve2D.Double(x_begin,y_begin, (x_begin+x)/2, -5, x, y);
+								//g2d.draw(quadcurve);
+								kropka2d.setColor(Color.black);
+								String s = Integer.toString(i);
+								napis2d.drawString(s, x-5, y-5);
+							}
+							if(z==4){
+								//QuadCurve2D quadcurve = new QuadCurve2D.Double(x_begin,y_begin, (x_begin+x)/2, -10, x, y);
+								//g2d.draw(quadcurve);
+								kropka2d.setColor(Color.black);
+								String s = Integer.toString(i);
+								napis2d.drawString(s, x-5, y-5);
+							} 				
+							}
+						}	
+						
+							
+							
+							
+							
+							
+				/*		//path.lineTo(x, y);
 						Graphics2D luk2d = (Graphics2D) g;
 						if(i%5==0)
 						{
@@ -85,53 +149,18 @@ public class Window extends JFrame {
 							napis2d.drawString(s, x-5, y-5);
 						
 						} 
-						
-						if(i%5==3){
-							luk2d.drawArc(x, y, 100, 70, 0, c);//(int x, int y, int width, int height, int startAngle, int arcAngle
-							Graphics2D kropka2d = (Graphics2D) g;
-							Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10);
-							kropka2d.setColor(Color.black);
-							kropka2d.fill(circle); // kropka przejsciowa 
-							Graphics2D napis2d = (Graphics2D) g;
-							String s = Integer.toString(i);
-							napis2d.drawString(s, x-5, y-5);
-							
-						}
-						
-						else{
-							path.lineTo(x, y);
-							Graphics2D kropka2d = (Graphics2D) g;
-							Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10);
-							kropka2d.setColor(Color.black);
-							kropka2d.fill(circle); // kropka przejsciowa 
-							Graphics2D napis2d = (Graphics2D) g;
-							String s = Integer.toString(i);
-							napis2d.drawString(s, x-5, y-5);
-							}
-							
-						
-						}
-					
-					//ustawienie kropki META
-					if (i == 19) {
-						Graphics2D kropka2d = (Graphics2D) g;
-						Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10);
-						kropka2d.setColor(Color.red);
-						kropka2d.fill(circle); // kropka mety
-						Graphics2D napis2d = (Graphics2D) g;
-						napis2d.drawString("META", x - 5, y - 5);
-						g2d.setColor(Color.BLACK);// kolor sciezki
-					}
+						*/
+			
 				}
-*/
-				
+
+			/*	
 				for (int i = 0; i < 15; i++) {		
 					System.out.print(Sciezka.Tables[i].getx());
-					int x = (int)Sciezka.Tables[i].getx();
 					
-					int y = (int)Sciezka.Tables[i].gety();
-
-					int c=Sciezka.Tables[i].gettype();
+					int x = (int)Sciezka.Tables[i].getx()*8;
+					int y = (int)Sciezka.Tables[i].gety()*6;
+					int c = Sciezka.Tables[i].gettype();
+					int z = Sciezka.Tables[i].getcurve();
 					
 					//ustawnienie kropki START
 					if (i == 0) {
@@ -196,18 +225,20 @@ public class Window extends JFrame {
 						napis2d.drawString("META", x - 5, y - 5);
 						g2d.setColor(Color.BLACK);// kolor sciezki
 					}
-				}
+				}*/
+				
+				
 				drawLandmarks(g);
 				g2d.draw(path); // rysowanie drogi
-				
-				
+						
 			}
 		};
 
 		add(panel); // dodanie rysowania sciezki do okna
-
-		// wypisanie sciezki
+	
 		Sciezka = new Path();
+		
+		// wypisanie sciezki
 		for (int i = 0; i < 15; i++) {
 			System.out.println("Punkt nr:" + i + " x="
 					+ Sciezka.Tables[i].getx() + " y="
