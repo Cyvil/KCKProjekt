@@ -84,6 +84,7 @@ public class Window extends JFrame {
 
 		// tworzenie sciezki
 		Sciezka = new Path();
+		
 		for (int i = 0; i < 20; i++) {
 			System.out.println("Punkt nr:" + i + " x="
 					+ Sciezka.Tables[i].getx() + " y="
