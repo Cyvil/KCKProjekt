@@ -53,15 +53,13 @@ public class Window extends JFrame {
 
 				//generowanie sciezki
 				
-				for (int i = 0; i < 20; i++) {		
+				for (int i = 0; i < 11; i++) {		
 
 					int x = (int)Sciezka.Tables[i].getx() * 8;
 					int y = (int)Sciezka.Tables[i].gety() * 6;
 					
-					
-					//int c=Sciezka.Tables[i].gettype();
 					int z = Sciezka.Tables[i].getcurve();
-					
+					System.out.println("rodzaj sciezki: "+Sciezka.Tables[i].getcurve()+"po "+i+ " kropce");
 					
 					Graphics2D kropka2d = (Graphics2D) g;
 					Ellipse2D.Double circle = new Ellipse2D.Double(x - 4,y - 4, 10, 10);
@@ -77,7 +75,7 @@ public class Window extends JFrame {
 						} 
 					
 					//ustawienie kropki META
-					if (i == 19) {
+					if (i == 10) {
 					
 							kropka2d.setColor(Color.red);											
 							napis2d.drawString("META", x - 5, y - 5);
@@ -99,7 +97,7 @@ public class Window extends JFrame {
 							}
 							
 							if(z==1){
-								QuadCurve2D quadcurve = new QuadCurve2D.Double(x_begin,y_begin, 100, 170, x, y);
+								QuadCurve2D quadcurve = new QuadCurve2D.Double(x_begin,y_begin, x_begin+20, y, x, y);
 								g2d.draw(quadcurve);
 								kropka2d.setColor(Color.black);
 								String s = Integer.toString(i);
@@ -107,22 +105,22 @@ public class Window extends JFrame {
 							}
 							
 							if(z==2){
-								QuadCurve2D quadcurve = new QuadCurve2D.Double(x_begin,y_begin, 100, -170, x, y);
+								QuadCurve2D quadcurve = new QuadCurve2D.Double(x_begin,y_begin, x_begin+40, y-40, x, y);
 								g2d.draw(quadcurve);
 								kropka2d.setColor(Color.black);
 								String s = Integer.toString(i);
 								napis2d.drawString(s, x-5, y-5);								
 							}
 							if(z==3){
-								//QuadCurve2D quadcurve = new QuadCurve2D.Double(x_begin,y_begin, (x_begin+x)/2, -5, x, y);
-								//g2d.draw(quadcurve);
+								QuadCurve2D quadcurve = new QuadCurve2D.Double(x_begin,y_begin, x-60, y_begin-40, x, y);
+								g2d.draw(quadcurve);
 								kropka2d.setColor(Color.black);
 								String s = Integer.toString(i);
 								napis2d.drawString(s, x-5, y-5);
 							}
 							if(z==4){
-								//QuadCurve2D quadcurve = new QuadCurve2D.Double(x_begin,y_begin, (x_begin+x)/2, -10, x, y);
-								//g2d.draw(quadcurve);
+								QuadCurve2D quadcurve = new QuadCurve2D.Double(x_begin,y_begin, x-40, y_begin, x, y);
+								g2d.draw(quadcurve);
 								kropka2d.setColor(Color.black);
 								String s = Integer.toString(i);
 								napis2d.drawString(s, x-5, y-5);
@@ -239,7 +237,7 @@ public class Window extends JFrame {
 		Sciezka = new Path();
 		
 		// wypisanie sciezki
-		for (int i = 0; i < 15; i++) {
+		for (int i = 0; i < 20; i++) {
 			System.out.println("Punkt nr:" + i + " x="
 					+ Sciezka.Tables[i].getx() + " y="
 					+ Sciezka.Tables[i].gety());
