@@ -42,7 +42,7 @@ public class Path {
 			k = generator.nextInt(8)+1;
 			x = Tables[i-1].gennextx(k);
 			y = Tables[i-1].gennexty(k);
-			z = generator.nextInt(5)+1;
+			z = generator.nextInt(10)+1;
 			Backtrack = Tables[i-1].Backtrack(k);
 			OutsideMap = CheckOutsideMap(x,y);
 			if (Backtrack==false && OutsideMap==false) ValidPoint = true;
