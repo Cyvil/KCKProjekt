@@ -1,7 +1,7 @@
 import java.util.Random;
 
 
-// stworzenie klasy Environment, która ma byæ œrodowiskiem, map¹;
+// stworzenie klasy Environment, ktÃ³ra ma byÄ‡ Å›rodowiskiem, mapÄ…;
 
 public class Environment {
 
@@ -52,16 +52,108 @@ public class Environment {
 		}
 		
 		/*
-		 * wywo³anie konstruktowa bezargumentowego klasy Environment tworzy tablicê jednowymiarow¹ o nazwie landmarkArray
-		 * wype³nion¹ obiektami typu Landmark;
-		 * iloœæ landmarków, które maj¹ pojawiæ siê na mapie (tu: wielkoœæ tablicy landmarkArray)
-		 * generowana jest losowo, nie ma przekraczaæ 21;
-		 * tablica wype³niana jest kolejno nowo tworzonymi landmarkami, których cechy najpierw s¹ ustalane: 
-		 * pozycja(wartoœæ x i y losuje generator),
-		 * przy czym po wylosownaiu pozycji nastêpuje sprawdzenie czy nie dochodzi do kolizji z innymi landmarkami
-		 * typ, wybierany z zakresu dostêpnych w danych polu mo¿liwoœci 
+		 * wywoÅ‚anie konstruktowa bezargumentowego klasy Environment tworzy tablicÄ™ jednowymiarowÄ… o nazwie landmarkArray
+		 * wypeÅ‚nionÄ… obiektami typu Landmark;
+		 * iloÅ›Ä‡ landmarkÃ³w, ktÃ³re majÄ… pojawiÄ‡ siÄ™ na mapie (tu: wielkoÅ›Ä‡ tablicy landmarkArray)
+		 * generowana jest losowo, nie ma przekraczaÄ‡ 21;
+		 * tablica wypeÅ‚niana jest kolejno nowo tworzonymi landmarkami, ktÃ³rych cechy najpierw sÄ… ustalane: 
+		 * pozycja(wartoÅ›Ä‡ x i y losuje generator),
+		 * przy czym po wylosownaiu pozycji nastÄ™puje sprawdzenie czy nie dochodzi do kolizji z innymi landmarkami
+		 * typ, wybierany z zakresu dostÄ™pnych w danych polu moÅ¼liwoÅ›ci 
 		 * 
 		 */
+		
+	}
+	
+	  Environment(Path path)
+	{
+		Random generator = new Random();
+ //               while(landmarkArraySize < 15)
+//		{
+//			landmarkArraySize = generator.nextInt(21);
+//		}
+		
+		landmarkArraySize = 15;
+		
+		landmarkArray = new Landmark[landmarkArraySize];
+                
+                double xMin = 100, xMax = 0, yMin = 100, yMax = 0;
+                
+                for(int i = 0; i < 11; i++)
+                { 
+                    double xTemp = path.Tables[i].getx();
+                    double yTemp = path.Tables[i].gety();
+                    if(xTemp < xMin)
+                        xMin = xTemp;
+                    if(yTemp < yMin)
+                        yMin = yTemp;
+                    if(xTemp > xMax)
+                        xMax = xTemp;
+                    if(yTemp > yMax)
+                        yMax = yTemp;
+                        
+                }
+		
+		
+		for(int i = 0; i < landmarkArraySize; i++)
+		{
+			int t;
+			Point tempPoint = new Point((double)generator.nextInt((int)xMax+5),(double)generator.nextInt((int)xMin+5));
+			
+			t = generator.nextInt(9);
+			
+			boolean collision = true, borders = true;
+			
+			while(collision || borders)
+			{
+				
+			tempPoint.setX((double)generator.nextInt((int)xMax+5) + generator.nextDouble());
+			tempPoint.setY((double)generator.nextInt((int)xMin+5) + generator.nextDouble());
+                        
+                        if(tempPoint.getX() < xMin - 5 || tempPoint.getY() < yMin - 5) 
+                            borders = true;
+                        else borders = false;
+			
+                        Landmark tempLandmark =new  Landmark(t, tempPoint);
+                        
+			int collisionSum = 0;	
+				for (int j = 0; j < i; j++)
+				{
+					if (landmarkArray[j].collision(tempPoint))
+						collisionSum++;
+                                        
+				}
+                                    for (int z = 0; z < 11; z++)
+				{
+                                    Point tempPointPath = new Point(path.Tables[z].getx(), path.Tables[z].gety());
+                                    
+                                    
+					if (tempLandmark.collision(tempPointPath))
+                                        {
+                                            collisionSum++;
+                                        }
+                                        else
+                                        {
+                                            for(int f = 0; f < 3; f++)
+                                            {
+                                                tempPointPath = path.Tables[z].getBetween(tempPointPath,f);
+                                                if (tempLandmark.collision(tempPointPath))
+                                                {
+                                              	collisionSum++;
+                                                }
+                                            }
+                                        }
+                                        
+				}
+                                
+				
+				if (collisionSum == 0) collision = false;
+			}
+			
+			landmarkArray[i] = new Landmark(t,tempPoint);
+			
+		}
+		
 		
 	}
 	
