@@ -34,7 +34,7 @@ public class Window extends JFrame {
 		super("Find me"); // nazwa okienka -> pasek
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // ustawienie opcji
 														// zmykania
-														// okna->klikniêcie na x
+														// okna->klikniÃªcie na x
 		setVisible(true); // wyswietlanie
 		setSize(800, 600);
 		setResizable(false); // nie mozna rozciagnac okna
@@ -136,11 +136,11 @@ public class Window extends JFrame {
 	// metoda na landmarki
 	private void drawLandmarks(Graphics g) {
 		Graphics2D landmarki2d = (Graphics2D) g; // rysowanie landmarkow
-		Environment environment = new Environment();
+		Environment environment = new Environment(Sciezka);
 		for (int i = 0; i < environment.landmarkArraySize; i++) {
 
-			int a = (int) environment.landmarkArray[i].getPoint().getX();
-			int b = (int) environment.landmarkArray[i].getPoint().getY();
+			int a = (int) environment.landmarkArray[i].getPoint().getX() * 8;
+			int b = (int) environment.landmarkArray[i].getPoint().getY() * 6;
 
 			if (environment.landmarkArray[i].getType() == Landmark.Type.TREE)
 				landmarki2d.drawImage(TREE, a, b, 30, 30, this);
@@ -164,7 +164,7 @@ public class Window extends JFrame {
 			 * System.out.println("Landmark " + i + ": " +
 			 * environment.landmarkArray[i].getType() + " pozycja : x = " +
 			 * environment.landmarkArray[i].getPoint().getX() + " y = " +
-			 * environment.landmarkArray[i].getPoint().getY() + " widocznoœæ :"
+			 * environment.landmarkArray[i].getPoint().getY() + " widocznoÅ“Ã¦ :"
 			 * + environment.landmarkArray[i].getRadius(false) + " Kolizja :" +
 			 * environment.landmarkArray[i].getRadius(true));
 			 */
