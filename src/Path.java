@@ -3,7 +3,7 @@ import java.util.Random;
 public class Path {
 	public PointPath[] Tables;
 	public boolean CheckOutsideMap(double x, double y) {
-		if (x>100||x<0||y>100||y<0) 
+		if (x>90||x<10||y>90||y<10) 
 			return true; 
 		return false;
 	}
