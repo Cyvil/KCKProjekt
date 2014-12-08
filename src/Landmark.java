@@ -3,16 +3,16 @@ import java.lang.Math;
 public class Landmark {
 	
 	/* stworzenie klasy Landmark o polach: position, type i colour; 
-	 * ka¿dy Landmark ustawiany przez nas na mapie posiada³ wiêc bêdzie trzy cechy:
+	 * kaÅ¼dy Landmark ustawiany przez nas na mapie posiadaÅ‚ wiÄ™c bÄ™dzie trzy cechy:
 	 * typ - rodzaj przedmiotu,budynku,miejsca itp.
-	 * kolor landmarka w danym typie, poszerza gamê dostêpnych w puli generatora landmarków 
-	 * pozycjê - na bazie obiektu typu Point, wyznaczaæ bêdzie miejsce na mapie, w którym dany landmark zostanie umieszczony;
+	 * kolor landmarka w danym typie, poszerza gamÄ™ dostÄ™pnych w puli generatora landmarkÃ³w 
+	 * pozycjÄ™ - na bazie obiektu typu Point, wyznaczaÄ‡ bÄ™dzie miejsce na mapie, w ktÃ³rym dany landmark zostanie umieszczony;
 	 * 
-	 * wywo³anie konstruktora bezargumentowego skutkuje postawieniem landmarka w formie szarego kamienia w punkcie Point=(50,50);
-	 * wywo³anie konstruktora trójargumentowego generuje losowy landmark:
-	 * 		-oblicza modulo 9 z podanej na wejœciu liczby, uzyskuj¹c liczbê typu integer, której na sta³e odpowiada dany typ landmarku
-	 * 		-oblicza modulo 10 z kolejnej podanej na wejœciu liczby, której na sta³e przypisane zosta³y kolory z dostêpnej gamy
-	 * 		-ustawia wartoœci x i y Punktu, który bêdzie wskazywa³ miejsce umieszczenia landmarka
+	 * wywoÅ‚anie konstruktora bezargumentowego skutkuje postawieniem landmarka w formie szarego kamienia w punkcie Point=(50,50);
+	 * wywoÅ‚anie konstruktora trÃ³jargumentowego generuje losowy landmark:
+	 * 		-oblicza modulo 9 z podanej na wejÅ›ciu liczby, uzyskujÄ…c liczbÄ™ typu integer, ktÃ³rej na staÅ‚e odpowiada dany typ landmarku
+	 * 		-oblicza modulo 10 z kolejnej podanej na wejÅ›ciu liczby, ktÃ³rej na staÅ‚e przypisane zostaÅ‚y kolory z dostÄ™pnej gamy
+	 * 		-ustawia wartoÅ›ci x i y Punktu, ktÃ³ry bÄ™dzie wskazywaÅ‚ miejsce umieszczenia landmarka
 	 */
 	
 	protected enum Type
@@ -35,16 +35,16 @@ public class Landmark {
 	*/
 //	Colour colour;
 	
-	Landmark()
+		Landmark()
 	{
 		position = new Point(50,50);
 		type = Type.STONE;
 		visibilityRadius = 10.0;
-		collisionRadius = visibilityRadius/10;
+		collisionRadius = visibilityRadius/2.5;
 	}
 	
 	
-	//Konstruktor, ustala typ a tak¿e przypisan¹ do niego widocznoœæ Landmarku
+	//Konstruktor, ustala typ a takï¿½e przypisanï¿½ do niego widocznoï¿½ï¿½ Landmarku
 	Landmark(int t, Point p)
 	{
 		t = t % 9;
@@ -89,16 +89,16 @@ public class Landmark {
 			break;
 		}
 			
-		collisionRadius = visibilityRadius/10;
+		collisionRadius = visibilityRadius/2.5;
 		position = new Point();
 		position.setX(p.getX());
 		position.setY(p.getY());
 
 	}
 	
-	//Widocznoœæ - dla uproszczenia i realizmu zawsze jest jakby ko³em wokó³ tego obiektu o promieniu visibilityRadius
-	//¯eby sprawdziæ czy obiekt jest widoczny sprawdzamy jego odleg³oœæ od punktu w którym stoimy 
-	//Je¿eli ta odleg³oœæ jest mniejsza ni¿ promieñ widocznoœci to wtedy obiekt jest "widoczny"
+	//WidocznoÅ›Ä‡ - dla uproszczenia i realizmu zawsze jest jakby koÅ‚em wokÃ³Å‚ tego obiektu o promieniu visibilityRadius
+	//Å»eby sprawdziÄ‡ czy obiekt jest widoczny sprawdzamy jego odlegÅ‚oÅ›Ä‡ od punktu w ktÃ³rym stoimy 
+	//JeÅ¼eli ta odlegÅ‚oÅ›Ä‡ jest mniejsza niÅ¼ promieÅ„ widocznoÅ›ci to wtedy obiekt jest "widoczny"
 	
 	boolean visibility(Point p)
 	{
@@ -108,10 +108,10 @@ public class Landmark {
 		else return false;
 	}
 	
-	//Kolizja - tutaj sprawa ma siê analogicznie, w istocie to tylko kopiuj wklej,
-	//ale zasadniczo te dwie metody s³u¿¹ do ró¿nych rzeczy
-	//Tutaj dla UPROSZCZENIA przyjmujemy, ¿e to obiekty ko³owe, ¿eby nie musieæ kombinowaæ z kolizjami 
-	//Generalnie tak dla u³atwienia przyj¹³em, ¿e promien kolizji jest 10 razy mniejszy od promienia widocznosci
+	//Kolizja - tutaj sprawa ma siÄ™ analogicznie, w istocie to tylko kopiuj wklej,
+	//ale zasadniczo te dwie metody sÅ‚uÅ¼Ä… do rÃ³Å¼nych rzeczy
+	//Tutaj dla UPROSZCZENIA przyjmujemy, Å¼e to obiekty koÅ‚owe, Å¼eby nie musieÄ‡ kombinowaÄ‡ z kolizjami 
+	//Generalnie tak dla uÅ‚atwienia przyjÄ…Å‚em, Å¼e promien kolizji jest 10 razy mniejszy od promienia widocznosci
 	
 	boolean collision(Point p)
 	{
@@ -128,7 +128,7 @@ public class Landmark {
 		return this.type;
 	}
 	
-	//Zwracamy któryœ z promieni - jezeli jest true to zwracamy promien kolizji, jesli false - promien widocznoœci
+	//Zwracamy ktÃ³ryÅ› z promieni - jezeli jest true to zwracamy promien kolizji, jesli false - promien widocznoÅ›ci
 	
 	double getRadius(boolean collision)
 	{
