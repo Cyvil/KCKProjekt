@@ -59,8 +59,8 @@ public class Window extends JFrame {
 
 					float x = (float) Sciezka.Tables[i].getx() * 8.0f;
 					float y = (float) Sciezka.Tables[i].gety() * 6.0f;
-
 					int z = Sciezka.Tables[i].getcurve();
+					
 					// System.out.println("rodzaj sciezki: "+Sciezka.Tables[i].getcurve()+"po "+i+
 					// " kropce");
 
