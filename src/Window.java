@@ -59,8 +59,8 @@ public class Window extends JFrame {
 
 					float x = (float) Sciezka.Tables[i].getx() * 8.0f;
 					float y = (float) Sciezka.Tables[i].gety() * 6.0f;
-
 					int z = Sciezka.Tables[i].getcurve();
+					
 					// System.out.println("rodzaj sciezki: "+Sciezka.Tables[i].getcurve()+"po "+i+
 					// " kropce");
 
@@ -80,7 +80,6 @@ public class Window extends JFrame {
 						kropka2d.setColor(Color.BLACK); // ustawienie koloru
 					} 
 					else if (i == 10) { // ustawienie kropki META
-
 						kropka2d.setColor(Color.red);
 						napis2d.drawString("META", x - 5.0f, y - 5.0f);
 						g2d.setColor(Color.BLACK);// kolor sciezki
@@ -89,19 +88,54 @@ public class Window extends JFrame {
 					// posrednie kropki sciezki
 
 					if (i > 0) {
+						
 						float x_begin = (float) Sciezka.Tables[i - 1].getx() * 8.0f;
 						float y_begin = (float) Sciezka.Tables[i - 1].gety() * 6.0f;
 						
+						if(z==0 || z==1 || z==2 || z==3 || z==4 || z==5 || z==10){
+							path.lineTo(x, y);
+							kropka2d.setColor(Color.black);
+						}
+						
+						//ostry ³uk w lewo
+						if(z==6){
 						QuadCurve2D quadcurve = new QuadCurve2D.Float(x_begin,
 								y_begin, x_begin + 20.0f, y, x, y);
 						g2d.draw(quadcurve);
 						// path.lineTo(x, y);
 						kropka2d.setColor(Color.black);
+						}
 						
+						//³agodny ³uk w lewo
+						if(z==7){
+							QuadCurve2D quadcurve = new QuadCurve2D.Float(x_begin,
+									y_begin, x_begin - 20.0f, y-20.0f, x, y);
+							g2d.draw(quadcurve);
+							// path.lineTo(x, y);
+							kropka2d.setColor(Color.black);
+						}
+						
+						//³agodny ³uk w prawo
+						if(z==8){
+							QuadCurve2D quadcurve = new QuadCurve2D.Float(x_begin,
+									y_begin, x, y_begin+20.0f, x, y);
+							g2d.draw(quadcurve);
+							// path.lineTo(x, y);
+							kropka2d.setColor(Color.black);
+						}
+						
+						//ostry ³uk w prawo
+						if(z==9){
+							QuadCurve2D quadcurve = new QuadCurve2D.Float(x_begin,
+									y_begin, x, y_begin, x, y);
+							g2d.draw(quadcurve);
+							// path.lineTo(x, y);
+							kropka2d.setColor(Color.black);
+						}
 						
 						//rysowanie skrzyzowania
 						Random generator=new Random();
-						double c = (double)(generator.nextInt(20)+10)*Math.pow(-1.0, generator.nextInt(2)*1.0);
+						double c = (double)(generator.nextInt(20)+15)*Math.pow(-1.0, generator.nextInt(2)*1.0);
 						path.moveTo(x-c,y-c);
 						path.lineTo(x, y);
 						
