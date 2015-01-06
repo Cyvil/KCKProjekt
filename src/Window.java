@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 public class Window extends JFrame {
 
 	private Path Sciezka;
+	private Environment Srodowisko;
 	private Image TREE = Toolkit.getDefaultToolkit().getImage("img/tree.png");
 	private Image STONE = Toolkit.getDefaultToolkit().getImage("img/stone.png");
 	private Image SANTA = Toolkit.getDefaultToolkit().getImage("img/santa.png");
@@ -30,16 +31,23 @@ public class Window extends JFrame {
 	private Image HOUSE = Toolkit.getDefaultToolkit().getImage("img/house.png");
 	public boolean isDrew = true;
 
-	public Window() {
+	public Window(Path path, Environment environment) {
+		
+		
 		super("Find me"); // nazwa okienka -> pasek
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // ustawienie opcji
 														// zmykania
-														// okna->klikniÃªcie na x
+														// okna->klikniêcie na x
 		setVisible(true); // wyswietlanie
 		setSize(800, 600);
 		setResizable(false); // nie mozna rozciagnac okna
 
 		setBackground(Color.WHITE);
+		
+		Sciezka = path;
+		Srodowisko = environment;
+		
+	
 
 		JPanel panel = new JPanel() {
 			protected void paintComponent(Graphics g) {
@@ -55,7 +63,7 @@ public class Window extends JFrame {
 
 				// generowanie sciezki
 
-				for (int i = 0; i < 11; i++) {
+				for (int i = 0; i < 20; i++) {
 
 					float x = (float) Sciezka.Tables[i].getx() * 8.0f;
 					float y = (float) Sciezka.Tables[i].gety() * 6.0f;
@@ -67,8 +75,8 @@ public class Window extends JFrame {
 					Graphics2D kropka2d = (Graphics2D) g;
 					Ellipse2D.Float circle = new Ellipse2D.Float(x - 4.0f,
 							y - 4.0f, 10.0f, 10.0f);
-					System.out.println("Punkt nr " + i + ": " + (x - 4.0f)
-							+ " " + (y - 4.0f) + " ");
+//					System.out.println("Punkt nr " + i + ": " + (x - 4.0f)
+//							+ " " + (y - 4.0f) + " ");
 					kropka2d.fill(circle); // kropka przejsciowa
 					Graphics2D napis2d = (Graphics2D) g;
 
@@ -79,8 +87,7 @@ public class Window extends JFrame {
 						napis2d.drawString("START", x - 5.0f, y - 5.0f);
 						kropka2d.setColor(Color.BLACK); // ustawienie koloru
 					} 
-					else if (i == 10) { // ustawienie kropki META
-
+					else if (i == 19) { // ustawienie kropki META
 						kropka2d.setColor(Color.red);
 						napis2d.drawString("META", x - 5.0f, y - 5.0f);
 						g2d.setColor(Color.BLACK);// kolor sciezki
@@ -89,23 +96,58 @@ public class Window extends JFrame {
 					// posrednie kropki sciezki
 
 					if (i > 0) {
+						
 						float x_begin = (float) Sciezka.Tables[i - 1].getx() * 8.0f;
 						float y_begin = (float) Sciezka.Tables[i - 1].gety() * 6.0f;
 						
+						if(z==0 || z==1 || z==2 || z==3 || z==4 || z==5 || z==10){
+							path.lineTo(x, y);
+							kropka2d.setColor(Color.black);
+						}
+						
+						//ostry ³uk w lewo
+						if(z==6){
 						QuadCurve2D quadcurve = new QuadCurve2D.Float(x_begin,
 								y_begin, x_begin + 20.0f, y, x, y);
 						g2d.draw(quadcurve);
 						// path.lineTo(x, y);
 						kropka2d.setColor(Color.black);
+						}
 						
+						//³agodny ³uk w lewo
+						if(z==7){
+							QuadCurve2D quadcurve = new QuadCurve2D.Float(x_begin,
+									y_begin, x_begin - 20.0f, y-20.0f, x, y);
+							g2d.draw(quadcurve);
+							// path.lineTo(x, y);
+							kropka2d.setColor(Color.black);
+						}
+						
+						//³agodny ³uk w prawo
+						if(z==8){
+							QuadCurve2D quadcurve = new QuadCurve2D.Float(x_begin,
+									y_begin, x, y_begin+20.0f, x, y);
+							g2d.draw(quadcurve);
+							// path.lineTo(x, y);
+							kropka2d.setColor(Color.black);
+						}
+						
+						//ostry ³uk w prawo
+						if(z==9){
+							QuadCurve2D quadcurve = new QuadCurve2D.Float(x_begin,
+									y_begin, x, y_begin, x, y);
+							g2d.draw(quadcurve);
+							// path.lineTo(x, y);
+							kropka2d.setColor(Color.black);
+						}
 						
 						//rysowanie skrzyzowania
 						Random generator=new Random();
-						double c = (double)(generator.nextInt(20)+10)*Math.pow(-1.0, generator.nextInt(2)*1.0);
+						double c = (double)(generator.nextInt(20)+15)*Math.pow(-1.0, generator.nextInt(2)*1.0);
 						path.moveTo(x-c,y-c);
 						path.lineTo(x, y);
 						
-						if(i!=10){
+						if(i!=19){
 						String s = Integer.toString(i);
 						napis2d.drawString(s, x - 5, y - 5);
 						}
@@ -114,7 +156,7 @@ public class Window extends JFrame {
 
 				}
 
-				drawLandmarks(g);
+				drawLandmarks(g,Srodowisko);
 				g2d.draw(path); // rysowanie drogi
 
 			}
@@ -125,18 +167,19 @@ public class Window extends JFrame {
 		Sciezka = new Path();
 
 		// wypisanie sciezki
-		for (int i = 0; i < 20; i++) {
+/*		for (int i = 0; i < 20; i++) {
 			System.out.println("Punkt nr:" + i + " x="
 					+ Sciezka.Tables[i].getx() + " y="
-					+ Sciezka.Tables[i].gety());
-		}
+					+ Sciezka.Tables[i].gety()); 
+		}*/
 
 	}
 
 	// metoda na landmarki
-	private void drawLandmarks(Graphics g) {
+	private void drawLandmarks(Graphics g, Environment e) {
 		Graphics2D landmarki2d = (Graphics2D) g; // rysowanie landmarkow
-		Environment environment = new Environment(Sciezka);
+		Graphics2D napis2d = (Graphics2D) g;
+		Environment environment = e;
 		for (int i = 0; i < environment.landmarkArraySize; i++) {
 
 			int a = (int) environment.landmarkArray[i].getPoint().getX() * 8;
@@ -158,13 +201,22 @@ public class Window extends JFrame {
 				landmarki2d.drawImage(STATUE, a, b, 40, 40, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.SIGN)
 				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
+			
+			String s = Integer.toString(i);
+			s += "l";
+			s += Integer.toString(a);
+			s += " ";
+			s += Integer.toString(b);
+			napis2d.setColor(Color.BLUE);
+			napis2d.drawString(s, a - 5, b - 5);
+			napis2d.setColor(Color.BLACK);
 
 			// wyswietlanie pomocnicze rozlozenia landmarkow na mapie
 			/*
 			 * System.out.println("Landmark " + i + ": " +
 			 * environment.landmarkArray[i].getType() + " pozycja : x = " +
 			 * environment.landmarkArray[i].getPoint().getX() + " y = " +
-			 * environment.landmarkArray[i].getPoint().getY() + " widocznoÅ“Ã¦ :"
+			 * environment.landmarkArray[i].getPoint().getY() + " widocznoœæ :"
 			 * + environment.landmarkArray[i].getRadius(false) + " Kolizja :" +
 			 * environment.landmarkArray[i].getRadius(true));
 			 */

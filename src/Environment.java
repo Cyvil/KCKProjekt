@@ -73,13 +73,13 @@ public class Environment {
 //			landmarkArraySize = generator.nextInt(21);
 //		}
 		
-		landmarkArraySize = 15;
+		landmarkArraySize = 10;
 		
 		landmarkArray = new Landmark[landmarkArraySize];
                 
                 double xMin = 100, xMax = 0, yMin = 100, yMax = 0;
                 
-                for(int i = 0; i < 11; i++)
+                for(int i = 0; i < path.Tables.length; i++)
                 { 
                     double xTemp = path.Tables[i].getx();
                     double yTemp = path.Tables[i].gety();
@@ -94,68 +94,77 @@ public class Environment {
                         
                 }
 		
+        System.out.println("xMin: " + xMin );  
+        System.out.println("xMax: " + xMax );  
+        System.out.println("yMin: " + yMin );  
+        System.out.println("yMax: " + yMax );  
+        
+        
 		
 		for(int i = 0; i < landmarkArraySize; i++)
 		{
 			int t;
-			Point tempPoint = new Point((double)generator.nextInt((int)xMax+5),(double)generator.nextInt((int)xMin+5));
+			Point tempPoint = new Point((double)generator.nextInt((int)xMax+5),(double)generator.nextInt((int)yMax+5));
 			
 			t = generator.nextInt(9);
 			
-			boolean collision = true, borders = true;
+			boolean collision = true, borders = true, visibility = false;
 			
-			while(collision || borders)
+			while(collision || borders || !visibility)
 			{
 				
 			tempPoint.setX((double)generator.nextInt((int)xMax+5) + generator.nextDouble());
-			tempPoint.setY((double)generator.nextInt((int)xMin+5) + generator.nextDouble());
+			tempPoint.setY((double)generator.nextInt((int)yMax+5) + generator.nextDouble());
                         
-                        if(tempPoint.getX() < xMin - 5 || tempPoint.getY() < yMin - 5) 
-                            borders = true;
-                        else borders = false;
+            if(tempPoint.getX() < xMin - 5 || tempPoint.getY() < yMin - 5) 
+                 borders = true;
+            else borders = false;
 			
-                        Landmark tempLandmark =new  Landmark(t, tempPoint);
+            Landmark tempLandmark =new Landmark(t, tempPoint);
                         
-			int collisionSum = 0;	
+			int collisionSum = 0, visibilitySum = 0;	
 				for (int j = 0; j < i; j++)
 				{
 					if (landmarkArray[j].collision(tempPoint))
 						collisionSum++;
                                         
 				}
-                                    for (int z = 0; z < 11; z++)
-				{
-                                    Point tempPointPath = new Point(path.Tables[z].getx(), path.Tables[z].gety());
-                                    
-                                    
-					if (tempLandmark.collision(tempPointPath))
-                                        {
-                                            collisionSum++;
-                                        }
-                                        else
-                                        {
-                                            for(int f = 0; f < 3; f++)
-                                            {
-                                                tempPointPath = path.Tables[z].getBetween(tempPointPath,f);
-                                                if (tempLandmark.collision(tempPointPath))
-                                                {
-                                              	collisionSum++;
-                                                }
-                                            }
-                                        }
-                                        
-				}
-                                
 				
-				if (collisionSum == 0) collision = false;
+                for (int z = 0; z < path.Tables.length; z++)
+				{
+  
+                                    
+                                    
+					if (path.Tables[z].collision(tempLandmark.getPoint()))
+                    {
+                       collisionSum++;
+                    }
+				
+					if (collisionSum == 0) collision = false;
+                                
+				}
+                
+                
+				for (int zi = 0; zi < path.Tables.length; zi++)
+				{
+					if(path.Tables[zi].visibility(tempLandmark.getPoint()))
+					{
+						visibilitySum++;
+					}
+
+				} 
+				
+				if (visibilitySum > 0) visibility = true;
+                
 			}
 			
 			landmarkArray[i] = new Landmark(t,tempPoint);
+			System.out.println("stworzono landmark " + i + "-ty");
 			
 		}
 		
 		
 	}
 	
-	
+ 	
 }

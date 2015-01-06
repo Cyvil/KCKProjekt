@@ -17,7 +17,7 @@ public class Landmark {
 	
 	protected enum Type
 	{
-		STONE, TREE, SANTA, GRAVE, WINDMILL, CHURCH, HOUSE, SIGN, STATUE 
+		STONE, TREE, SANTA, WINDMILL, CHURCH, HOUSE, SIGN, STATUE 
 	}
 	
 	private Type type;
@@ -49,47 +49,89 @@ public class Landmark {
 	{
 		t = t % 9;
 		
-		
+/*		
 		switch(t){
 		case 0:
 			type = Type.STONE;
-			visibilityRadius = 10.0;
+			visibilityRadius = 7.0;
 			break;
 		case 1:
 			type = Type.TREE;
-			visibilityRadius = 15.0;
+			visibilityRadius = 7.5;
 			break;
 		case 2:
 			type = Type.SANTA;
-			visibilityRadius = 10.0;
+			visibilityRadius = 7.0;
 			break;
 		case 3:
 			type = Type.TREE;
-			visibilityRadius = 15.0;
+			visibilityRadius = 7.5;
 			break;
 		case 4:
 			type = Type.WINDMILL;
-			visibilityRadius = 20.0;
+			visibilityRadius = 10.0;
 			break;
 		case 5:
 			type = Type.CHURCH;
-			visibilityRadius = 25.0;
+			visibilityRadius = 10.0;
 			break;
 		case 6:
 			type = Type.HOUSE;
-			visibilityRadius = 20.0;
+			visibilityRadius = 10.50;
 			break;
 		case 7:
 			type = Type.SIGN;
-			visibilityRadius = 10.0;
+			visibilityRadius = 7.0;
 			break;
 		case 8:
 			type = Type.STATUE;
-			visibilityRadius = 10.0;
+			visibilityRadius = 7.0;
 			break;
 		}
 			
 		collisionRadius = visibilityRadius/2.5;
+		*/
+		switch(t){
+		case 0:
+			type = Type.STONE;
+			collisionRadius = 2.50;
+			break;
+		case 1:
+			type = Type.TREE;
+			collisionRadius = 2.5;
+			break;
+		case 2:
+			type = Type.SANTA;
+			collisionRadius = 2.50;
+			break;
+		case 3:
+			type = Type.TREE;
+			collisionRadius = 2.5;
+			break;
+		case 4:
+			type = Type.WINDMILL;
+			collisionRadius = 3.0;
+			break;
+		case 5:
+			type = Type.CHURCH;
+			collisionRadius = 3.0;
+			break;
+		case 6:
+			type = Type.HOUSE;
+			collisionRadius = 3.00;
+			break;
+		case 7:
+			type = Type.SIGN;
+			collisionRadius = 2.50;
+			break;
+		case 8:
+			type = Type.STATUE;
+			collisionRadius = 2.50;
+			break;
+		}
+			
+		visibilityRadius = collisionRadius*3;
+		
 		position = new Point();
 		position.setX(p.getX());
 		position.setY(p.getY());
@@ -102,7 +144,7 @@ public class Landmark {
 	
 	boolean visibility(Point p)
 	{
-		double distance = Math.sqrt((position.getX() - p.getX())*(position.getX() - p.getX()) - (position.getY() - p.getY())*(position.getY() - p.getY()));
+		double distance = Math.sqrt((position.getX() - p.getX())*(position.getX() - p.getX()) + (position.getY() - p.getY())*(position.getY() - p.getY()));
 		if (distance <= visibilityRadius)
 			return true;
 		else return false;
@@ -115,7 +157,7 @@ public class Landmark {
 	
 	boolean collision(Point p)
 	{
-		double distance = Math.sqrt((position.getX() - p.getX())*(position.getX() - p.getX()) - (position.getY() - p.getY())*(position.getY() - p.getY()));
+		double distance = Math.sqrt((position.getX() - p.getX())*(position.getX() - p.getX()) + (position.getY() - p.getY())*(position.getY() - p.getY()));
 		if (distance <= collisionRadius)
 			return true;
 		else return false;
@@ -132,7 +174,7 @@ public class Landmark {
 	
 	double getRadius(boolean collision)
 	{
-		if (collision == true) return collisionRadius;
+		if (collision) return collisionRadius;
 		else return visibilityRadius;
 	}
 

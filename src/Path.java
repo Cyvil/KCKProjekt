@@ -26,7 +26,7 @@ public class Path {
 	int z = 0;
 	double x =0;
 	double y = 0;
-	distance = 17.76594;
+	distance = 23;
 	
 	//Wszystkie kolejne punkty
 	

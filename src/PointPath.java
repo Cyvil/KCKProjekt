@@ -5,73 +5,191 @@ import java.util.List;
 public class PointPath {
 	//    private double x = 0;
 	//    private double y = 0;
-            private Point point;
+        private Point point;
 	    private int type = 0;
 	    private double distance = 0;
 	    private int curve = 0;
-            private List<Landmark> visibleLandmarks;
+        private List<Landmark> visibleLandmarks;
+        private List<Integer> landmarkNumber;
+
+        private double visibilityRadius = 3.0;
+        private double collisionRadius = 1.0; 
+        
+        protected enum Location
+        {
+        	LEFT, RIGHT
+        }
+        
+       private List<Location> landmarkLocation;
+
 	    
 	    public double getx() {return point.getX();}
 	    public double gety() {return point.getY();}
 	    public int gettype() {return type;}
 	    public int getcurve() {return curve;}
-            public void setLandmarks(Landmark[] landmarks)
-            {
-                visibleLandmarks = new ArrayList<Landmark>();
+	    
+	    boolean visibility(Point p)
+		{
+			double distance = Math.sqrt((point.getX() - p.getX())*(point.getX() - p.getX()) + (point.getY() - p.getY())*(point.getY() - p.getY()));
+			if (distance <= visibilityRadius)
+				return true;
+			else return false;
+		}
+	    
+	    boolean collision(Point p)
+		{
+			double distance = Math.sqrt((point.getX() - p.getX())*(point.getX() - p.getX()) + (point.getY() - p.getY())*(point.getY() - p.getY()));
+			if (distance <= collisionRadius)
+				return true;
+			else return false;
+		}
+	    
+        public void setLandmarks(Landmark[] landmarks)
+        {
+           visibleLandmarks = new ArrayList<Landmark>();
+           landmarkNumber = new ArrayList<Integer>();
+           landmarkLocation = new ArrayList<Location>();
             
-                for(int i = 0; i > landmarks.length; i++)
-                {
-                    if(landmarks[i].visibility(point))
-                    {
-                        visibleLandmarks.add(landmarks[i]);
-                    }
-                }
-            
-            }
-            public Point getBetween(PointPath p, int i)
-            {
-                i = i % 3;
-                Point tempPoint = new Point();
-               if( i == 0)
-                {    
-                tempPoint.setX((p.getx() + this.getx())/2);
-                tempPoint.setY((p.getx() + this.gety())/2);
-                }
-                   if( i == 1)
-                {    
-                tempPoint.setX((p.getx() + this.getx())/3);
-                tempPoint.setY((p.getx() + this.gety())/3);
-                }
-                    if( i == 2)
-                {    
-                tempPoint.setX(2*(p.getx() + this.getx())/3);
-                tempPoint.setY(2*(p.getx() + this.gety())/3);
-                }
-                return tempPoint;
-            }
-            
-            public Point getBetween(Point p, int i)
-            {
-                i = i % 3;
-                Point tempPoint = new Point();
-                if( i == 0)
-                {    
-
-                tempPoint.setX((p.getX() + this.getx())/2);
-                tempPoint.setY((p.getX() + this.gety())/2);
-                }
-                   if( i == 1)
-                {    
-                tempPoint.setX((p.getX() + this.getx())/3);
-                tempPoint.setY((p.getX() + this.gety())/3);
-                }
-                    if( i == 2)
-                {    
-                tempPoint.setX(2*(p.getX() + this.getx())/3);
-                tempPoint.setY(2*(p.getX() + this.gety())/3);
-                }
-                 return tempPoint;
-            }
+             for(int i = 0; i < landmarks.length; i++)
+             {
+                 if(this.visibility(landmarks[i].getPoint()))
+                 {
+                     visibleLandmarks.add(landmarks[i]);
+                     landmarkNumber.add(i);
+                     Location loc = landmarkSide(landmarks[i]);
+                     landmarkLocation.add(loc);
+                 }
+             }
+          
+        }
+        
+        public void printLandmarks()
+        {
+        	int listSize = visibleLandmarks.size();
+        	
+        	for(int i = 0; i < listSize; i++)
+        	{
+        		System.out.println("Widaæ landmarki: " + this.visibleLandmarks.get(i).getType() + " o numerze :" + this.landmarkNumber.get(i) );
+        		System.out.println("o wspó³rzêdnych:  x = " + this.visibleLandmarks.get(i).getPoint().getX() + " y = " + this.visibleLandmarks.get(i).getPoint().getY());
+        		System.out.println("Po stronie " + this.landmarkLocation.get(i)+ " punktu");
+        	}
+        	
+        }
+        
+        public void getLandmark(Location loc, Landmark land, int j)
+        {
+        	if(visibleLandmarks.size()>0)
+        	{
+        		land = getLandmarkType(j);
+        		loc = getLandmarkSide(j);
+        	}
+        }
+        
+        public int getListSize()
+        {
+        	return visibleLandmarks.size();
+        }
+        
+        private Landmark getLandmarkType(int j)
+        {
+        	return visibleLandmarks.get(j);
+        }
+        
+        private Location getLandmarkSide(int j)
+        {
+        	return landmarkLocation.get(j);
+        }
+        
+        //Ustalanie czy landmark jest po lewej czy prawej stronie punktu (zale¿nie od kierunku drogi wywodz¹cej sie  z tego punktu)
+        private Location landmarkSide(Landmark l)
+        {
+        	
+        	Location loc = Location.LEFT;
+        	
+        	if (this.type == 1 || this.type == 5)
+        	{
+        		double constant = this.gety() + this.getx();
+        		
+        		if (l.getPoint().getX() + l.getPoint().getY() < constant)
+        		{
+        			if(this.type == 1) 
+        				return Location.RIGHT;
+        			else
+        				return Location.LEFT;
+        		}
+        		else
+        		{
+        			if(this.type == 5) 
+        				return Location.LEFT;
+        			else
+        				return Location.RIGHT;
+        		}	
+        	}
+        	
+        	if (this.type == 3 || this.type == 7)
+        	{
+        		double constant = this.gety() - this.getx();
+        		
+        		if (l.getPoint().getX() + constant < l.getPoint().getY())
+        		{
+        			if(this.type == 3) 
+        				return Location.RIGHT;
+        			else
+        				return Location.LEFT;
+        		}
+        		else
+        		{
+        			if(this.type == 7) 
+        				return Location.LEFT;
+        			else
+        				return Location.RIGHT;
+        		}	
+        	}
+        	
+        	if (this.type == 2 || this.type == 6)
+        	{
+        		double constant = this.gety();
+        		
+        		if (l.getPoint().getX() < constant)
+        		{
+        			if(this.type == 2) 
+        				return Location.RIGHT;
+        			else
+        				return Location.LEFT;
+        		}
+        		else
+        		{
+        			if(this.type == 6) 
+        				return Location.LEFT;
+        			else
+        				return Location.RIGHT;
+        		}
+        			
+        	}
+        	
+        	if (this.type == 4 || this.type == 8)
+        	{
+        		double constant = this.getx();
+        		
+        		if (l.getPoint().getY() < constant)
+        		{
+        			if(this.type == 8) 
+        				return Location.RIGHT;
+        			else
+        				return Location.LEFT;
+        		}
+        		else
+        		{
+        			if(this.type == 4) 
+        				return Location.LEFT;
+        			else
+        				return Location.RIGHT;
+        		}
+        			
+        	}
+			return loc;
+        }
+     
 	    
 	    //dwie nastepne metody generuja nastepny punkt w 8 mozliwych kierunkach (w praktyce mozliwych jest 7)
 	    public double gennextx(int o) {
