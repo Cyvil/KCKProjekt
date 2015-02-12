@@ -204,15 +204,15 @@ public class Window extends JFrame {
 			if (environment.landmarkArray[i].getType() == Landmark.Type.STONE)
 				landmarki2d.drawImage(STONE, a, b, 25, 25, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.SANTA)
-				landmarki2d.drawImage(SANTA, a, b, 30, 30, this);
+				landmarki2d.drawImage(SANTA, a, b, 35, 35, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.WINDMILL)
-				landmarki2d.drawImage(WINDMILL, a, b, 45, 45, this);
+				landmarki2d.drawImage(WINDMILL, a, b, 55, 55, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.CHURCH)
 				landmarki2d.drawImage(CHURCH, a, b, 50, 50, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.HOUSE)
 				landmarki2d.drawImage(HOUSE, a, b, 50, 50, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.STATUE)
-				landmarki2d.drawImage(STATUE, a, b, 55, 55, this);
+				landmarki2d.drawImage(STATUE, a, b, 70, 70, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.SIGN)
 				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.CAT)
@@ -220,7 +220,7 @@ public class Window extends JFrame {
 			if (environment.landmarkArray[i].getType() == Landmark.Type.BICYCLE)
 				landmarki2d.drawImage(BICYCLE, a, b, 25, 25, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.CROSS)
-				landmarki2d.drawImage(CROSS, a, b, 30, 30, this);
+				landmarki2d.drawImage(CROSS, a, b, 35, 35, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.DOG)
 				landmarki2d.drawImage(DOG, a, b, 25, 25, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.FONT)
@@ -238,7 +238,7 @@ public class Window extends JFrame {
 			if (environment.landmarkArray[i].getType() == Landmark.Type.BUSH)
 				landmarki2d.drawImage(BUSH, a, b, 30, 30, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.BENCH)
-				landmarki2d.drawImage(BENCH, a, b, 50, 50, this);
+				landmarki2d.drawImage(BENCH, a, b, 55, 55, this);
 			
 
 			
