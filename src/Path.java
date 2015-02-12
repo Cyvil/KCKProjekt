@@ -20,13 +20,14 @@ public class Path {
 	
 	int stA = generator.nextInt(20)*5; 
 	int stB = generator.nextInt(20)*5;	
-	Tables[0] = new PointPath(stA, stB, 0, 10, 0);
+	distance = 23;
+	Tables[0] = new PointPath(stA, stB, 0, distance, 0);
 	
 	int k = 0;
 	int z = 0;
 	double x =0;
 	double y = 0;
-	distance = 23;
+	
 	
 	//Wszystkie kolejne punkty
 	

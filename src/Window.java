@@ -77,7 +77,7 @@ public class Window extends JFrame {
 
 				// generowanie sciezki
 
-				for (int i = 0; i < 20; i++) {
+				for (int i = 0; i < 16; i++) {			// dlugosc sciezki -> 15
 
 					float x = (float) Sciezka.Tables[i].getx() * 8.0f;
 					float y = (float) Sciezka.Tables[i].gety() * 6.0f;
@@ -89,19 +89,17 @@ public class Window extends JFrame {
 					Graphics2D kropka2d = (Graphics2D) g;
 					Ellipse2D.Float circle = new Ellipse2D.Float(x - 4.0f,
 							y - 4.0f, 10.0f, 10.0f);
-//					System.out.println("Punkt nr " + i + ": " + (x - 4.0f)
-//							+ " " + (y - 4.0f) + " ");
 					kropka2d.fill(circle); // kropka przejsciowa
 					Graphics2D napis2d = (Graphics2D) g;
 
 					// ustawnienie kropki START
 					if (i == 0) {
 						path.moveTo(x, y);
-						kropka2d.setColor(Color.GREEN); // ustawienie koloru
+						kropka2d.setColor(Color.GREEN); // ustawienie koloru napisu
 						napis2d.drawString("START", x - 5.0f, y - 5.0f);
-						kropka2d.setColor(Color.BLACK); // ustawienie koloru
+						kropka2d.setColor(Color.BLACK); // ustawienie koloru kropki
 					} 
-					else if (i == 10) { // ustawienie kropki META
+					else if (i == 15) { // ustawienie kropki META
 						kropka2d.setColor(Color.red);
 						napis2d.drawString("META", x - 5.0f, y - 5.0f);
 						g2d.setColor(Color.BLACK);// kolor sciezki
@@ -161,7 +159,7 @@ public class Window extends JFrame {
 						path.moveTo(x-c,y-c);
 						path.lineTo(x, y);
 						
-						if(i!=19){
+						if(i!=15){
 						String s = Integer.toString(i);
 						napis2d.drawString(s, x - 5, y - 5);
 						}
