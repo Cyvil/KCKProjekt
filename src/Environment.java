@@ -68,12 +68,12 @@ public class Environment {
 	  Environment(Path path)
 	{
 		Random generator = new Random();
- //               while(landmarkArraySize < 15)
-//		{
-//			landmarkArraySize = generator.nextInt(21);
-//		}
+                while(landmarkArraySize < 15)
+		{
+			landmarkArraySize = generator.nextInt(21);
+		}
 		
-		landmarkArraySize = 10;
+//		landmarkArraySize = 10;
 		
 		landmarkArray = new Landmark[landmarkArraySize];
                 

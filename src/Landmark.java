@@ -49,50 +49,8 @@ public class Landmark {
 	//Konstruktor, ustala typ a tak�e przypisan� do niego widoczno�� Landmarku
 	Landmark(int t, Point p)
 	{
-		t = t % 9;
+		t = t % 20;
 		
-/*		
-		switch(t){
-		case 0:
-			type = Type.STONE;
-			visibilityRadius = 7.0;
-			break;
-		case 1:
-			type = Type.TREE;
-			visibilityRadius = 7.5;
-			break;
-		case 2:
-			type = Type.SANTA;
-			visibilityRadius = 7.0;
-			break;
-		case 3:
-			type = Type.TREE;
-			visibilityRadius = 7.5;
-			break;
-		case 4:
-			type = Type.WINDMILL;
-			visibilityRadius = 10.0;
-			break;
-		case 5:
-			type = Type.CHURCH;
-			visibilityRadius = 10.0;
-			break;
-		case 6:
-			type = Type.HOUSE;
-			visibilityRadius = 10.50;
-			break;
-		case 7:
-			type = Type.SIGN;
-			visibilityRadius = 7.0;
-			break;
-		case 8:
-			type = Type.STATUE;
-			visibilityRadius = 7.0;
-			break;
-		}
-			
-		collisionRadius = visibilityRadius/2.5;
-		*/
 		switch(t){
 		case 0:
 			type = Type.STONE;
