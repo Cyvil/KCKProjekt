@@ -200,7 +200,7 @@ public class Window extends JFrame {
 			int b = (int) environment.landmarkArray[i].getPoint().getY() * 6;
 
 			if (environment.landmarkArray[i].getType() == Landmark.Type.TREE)
-				landmarki2d.drawImage(TREE, a, b, 30, 30, this);
+				landmarki2d.drawImage(TREE, a, b, 40, 40, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.STONE)
 				landmarki2d.drawImage(STONE, a, b, 25, 25, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.SANTA)
@@ -210,13 +210,13 @@ public class Window extends JFrame {
 			if (environment.landmarkArray[i].getType() == Landmark.Type.CHURCH)
 				landmarki2d.drawImage(CHURCH, a, b, 50, 50, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.HOUSE)
-				landmarki2d.drawImage(HOUSE, a, b, 45, 45, this);
+				landmarki2d.drawImage(HOUSE, a, b, 50, 50, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.STATUE)
 				landmarki2d.drawImage(STATUE, a, b, 40, 40, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.SIGN)
 				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.CAT)
-				landmarki2d.drawImage(CAT, a, b, 25, 25, this);
+				landmarki2d.drawImage(CAT, a, b, 35, 35, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.BICYCLE)
 				landmarki2d.drawImage(BICYCLE, a, b, 25, 25, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.CROSS)
@@ -228,7 +228,7 @@ public class Window extends JFrame {
 			if (environment.landmarkArray[i].getType() == Landmark.Type.MAN)
 				landmarki2d.drawImage(MAN, a, b, 30, 30, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.BALL)
-				landmarki2d.drawImage(BALL, a, b, 25, 25, this);
+				landmarki2d.drawImage(BALL, a, b, 20, 20, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.FLOWER)
 				landmarki2d.drawImage(FLOWER, a, b, 25, 25, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.BIRD)
@@ -238,7 +238,7 @@ public class Window extends JFrame {
 			if (environment.landmarkArray[i].getType() == Landmark.Type.BUSH)
 				landmarki2d.drawImage(BUSH, a, b, 30, 30, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.BENCH)
-				landmarki2d.drawImage(BENCH, a, b, 35, 35, this);
+				landmarki2d.drawImage(BENCH, a, b, 40, 40, this);
 			
 
 			

@@ -51,7 +51,7 @@ public class Landmark {
 	Landmark(int t, Point p)
 	{
 		Random generator = new Random();
-		t = generator.nextInt(9);
+		t = generator.nextInt(21);
 		
 		switch(t){
 		case 0:
