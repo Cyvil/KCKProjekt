@@ -106,7 +106,7 @@ public class Environment {
 			int t;
 			Point tempPoint = new Point((double)generator.nextInt((int)xMax+5),(double)generator.nextInt((int)yMax+5));
 			
-			t = generator.nextInt(9);
+			t = generator.nextInt(21);
 			
 			boolean collision = true, borders = true, visibility = false;
 			
