@@ -87,7 +87,7 @@ public class Window extends JFrame {
 						napis2d.drawString("START", x - 5.0f, y - 5.0f);
 						kropka2d.setColor(Color.BLACK); // ustawienie koloru
 					} 
-					else if (i == 19) { // ustawienie kropki META
+					else if (i == 10) { // ustawienie kropki META
 						kropka2d.setColor(Color.red);
 						napis2d.drawString("META", x - 5.0f, y - 5.0f);
 						g2d.setColor(Color.BLACK);// kolor sciezki
