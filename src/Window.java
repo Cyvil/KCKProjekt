@@ -216,29 +216,29 @@ public class Window extends JFrame {
 			if (environment.landmarkArray[i].getType() == Landmark.Type.SIGN)
 				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.CAT)
-				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
+				landmarki2d.drawImage(CAT, a, b, 25, 25, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.BICYCLE)
-				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
+				landmarki2d.drawImage(BICYCLE, a, b, 25, 25, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.CROSS)
-				landmarki2d.drawImage(SIGN, a, b, 30, 30, this);
+				landmarki2d.drawImage(CROSS, a, b, 30, 30, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.DOG)
-				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
+				landmarki2d.drawImage(DOG, a, b, 25, 25, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.FONT)
-				landmarki2d.drawImage(SIGN, a, b, 30, 30, this);
+				landmarki2d.drawImage(FONT, a, b, 30, 30, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.MAN)
-				landmarki2d.drawImage(SIGN, a, b, 30, 30, this);
+				landmarki2d.drawImage(MAN, a, b, 30, 30, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.BALL)
-				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
+				landmarki2d.drawImage(BALL, a, b, 25, 25, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.FLOWER)
-				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
+				landmarki2d.drawImage(FLOWER, a, b, 25, 25, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.BIRD)
-				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
+				landmarki2d.drawImage(BIRD, a, b, 25, 25, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.CAR)
-				landmarki2d.drawImage(SIGN, a, b, 30, 30, this);
+				landmarki2d.drawImage(CAR, a, b, 30, 30, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.BUSH)
-				landmarki2d.drawImage(SIGN, a, b, 30, 30, this);
+				landmarki2d.drawImage(BUSH, a, b, 30, 30, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.BENCH)
-				landmarki2d.drawImage(SIGN, a, b, 35, 35, this);
+				landmarki2d.drawImage(BENCH, a, b, 35, 35, this);
 			
 
 			

@@ -1,6 +1,7 @@
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.lang.Math;
+import java.util.Random;
 
 public class Landmark {
 	
@@ -49,7 +50,8 @@ public class Landmark {
 	//Konstruktor, ustala typ a tak�e przypisan� do niego widoczno�� Landmarku
 	Landmark(int t, Point p)
 	{
-		t = t % 20;
+		Random generator = new Random();
+		t = generator.nextInt(9);
 		
 		switch(t){
 		case 0:

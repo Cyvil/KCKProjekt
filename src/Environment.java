@@ -12,12 +12,12 @@ public class Environment {
 	Environment()
 	{
 		Random generator = new Random();
-//		while(landmarkArraySize < 15)
-//		{
-//			landmarkArraySize = generator.nextInt(21);
-//		}
+		while(landmarkArraySize < 15)
+		{
+			landmarkArraySize = generator.nextInt(21);
+		}
 		
-		landmarkArraySize = 15;
+	//	landmarkArraySize = 15;
 		
 		landmarkArray = new Landmark[landmarkArraySize];
 		
