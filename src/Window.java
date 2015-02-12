@@ -29,6 +29,20 @@ public class Window extends JFrame {
 			"img/church.png");
 	private Image SIGN = Toolkit.getDefaultToolkit().getImage("img/sign.png");
 	private Image HOUSE = Toolkit.getDefaultToolkit().getImage("img/house.png");
+	private Image CAT = Toolkit.getDefaultToolkit().getImage("img/cat.png");
+	private Image BICYCLE = Toolkit.getDefaultToolkit().getImage("img/bicycle.png");
+	private Image CROSS = Toolkit.getDefaultToolkit().getImage("img/cross.png");
+	private Image DOG = Toolkit.getDefaultToolkit().getImage("img/dog.png");
+	private Image FONT = Toolkit.getDefaultToolkit().getImage("img/font.png");
+	private Image MAN = Toolkit.getDefaultToolkit().getImage("img/man.png");
+	private Image BALL = Toolkit.getDefaultToolkit().getImage("img/PILKA.png");
+	private Image FLOWER = Toolkit.getDefaultToolkit().getImage("img/flower.png");
+	private Image BIRD = Toolkit.getDefaultToolkit().getImage("img/bird.png");
+	private Image CAR = Toolkit.getDefaultToolkit().getImage("img/car.png");
+	private Image BUSH = Toolkit.getDefaultToolkit().getImage("img/bush.png");
+	private Image BENCH = Toolkit.getDefaultToolkit().getImage("img/bench.png");
+	
+	
 	public boolean isDrew = true;
 
 	public Window(Path path, Environment environment) {
@@ -201,6 +215,32 @@ public class Window extends JFrame {
 				landmarki2d.drawImage(STATUE, a, b, 40, 40, this);
 			if (environment.landmarkArray[i].getType() == Landmark.Type.SIGN)
 				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
+			if (environment.landmarkArray[i].getType() == Landmark.Type.CAT)
+				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
+			if (environment.landmarkArray[i].getType() == Landmark.Type.BICYCLE)
+				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
+			if (environment.landmarkArray[i].getType() == Landmark.Type.CROSS)
+				landmarki2d.drawImage(SIGN, a, b, 30, 30, this);
+			if (environment.landmarkArray[i].getType() == Landmark.Type.DOG)
+				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
+			if (environment.landmarkArray[i].getType() == Landmark.Type.FONT)
+				landmarki2d.drawImage(SIGN, a, b, 30, 30, this);
+			if (environment.landmarkArray[i].getType() == Landmark.Type.MAN)
+				landmarki2d.drawImage(SIGN, a, b, 30, 30, this);
+			if (environment.landmarkArray[i].getType() == Landmark.Type.BALL)
+				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
+			if (environment.landmarkArray[i].getType() == Landmark.Type.FLOWER)
+				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
+			if (environment.landmarkArray[i].getType() == Landmark.Type.BIRD)
+				landmarki2d.drawImage(SIGN, a, b, 25, 25, this);
+			if (environment.landmarkArray[i].getType() == Landmark.Type.CAR)
+				landmarki2d.drawImage(SIGN, a, b, 30, 30, this);
+			if (environment.landmarkArray[i].getType() == Landmark.Type.BUSH)
+				landmarki2d.drawImage(SIGN, a, b, 30, 30, this);
+			if (environment.landmarkArray[i].getType() == Landmark.Type.BENCH)
+				landmarki2d.drawImage(SIGN, a, b, 35, 35, this);
+			
+
 			
 			String s = Integer.toString(i);
 			s += "l";

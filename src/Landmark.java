@@ -1,3 +1,5 @@
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.lang.Math;
 
 public class Landmark {
@@ -17,7 +19,7 @@ public class Landmark {
 	
 	protected enum Type
 	{
-		STONE, TREE, SANTA, WINDMILL, CHURCH, HOUSE, SIGN, STATUE 
+		STONE, TREE, SANTA, WINDMILL, CHURCH, HOUSE, SIGN, STATUE, CAT, BICYCLE, CROSS, DOG, BENCH, FLOWER, FONT, MAN, BALL, BIRD, CAR, BUSH  
 	}
 	
 	private Type type;
@@ -128,8 +130,57 @@ public class Landmark {
 			type = Type.STATUE;
 			collisionRadius = 2.50;
 			break;
+		case 9:
+			type = Type.CAT;
+			collisionRadius = 2.50;
+			break;
+		case 10:
+			type = Type.BICYCLE;
+			collisionRadius = 2.50;
+			break;
+		case 11:
+			type = Type.CROSS;
+			collisionRadius = 2.50;
+			break;
+		case 12:
+			type = Type.DOG;
+			collisionRadius = 2.50;
+			break;
+		case 13:
+			type = Type.FONT;
+			collisionRadius = 2.50;
+			break;
+		case 14:
+			type = Type.MAN;
+			collisionRadius = 2.50;
+			break;
+		case 15:
+			type = Type.BALL;
+			collisionRadius = 2.50;
+			break;
+		case 16:
+			type = Type.FLOWER;
+			collisionRadius = 2.50;
+			break;
+		case 17:
+			type = Type.BIRD;
+			collisionRadius = 2.50;
+			break;
+		case 18:
+			type = Type.CAR;
+			collisionRadius = 2.50;
+			break;
+		case 19:
+			type = Type.BUSH;
+			collisionRadius = 2.50;
+			break;
+		case 20:
+			type = Type.BENCH;
+			collisionRadius = 2.50;
+			break;
 		}
 			
+		
 		visibilityRadius = collisionRadius*3;
 		
 		position = new Point();
