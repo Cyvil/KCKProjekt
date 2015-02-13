@@ -12,8 +12,8 @@ public class PointPath {
 	private List<Landmark> visibleLandmarks;
 	private List<Integer> landmarkNumber;
 
-	private double visibilityRadius = 3.0;
-	private double collisionRadius = 1.0;
+	private double visibilityRadius = 10.0;
+	private double collisionRadius = 5.0;
 
 	protected enum Location {
 		LEFT, RIGHT
@@ -60,8 +60,10 @@ public class PointPath {
 	public void setLandmarks(Landmark[] landmarks) {
 
 
-		for (int i = 0; i < landmarks.length; i++) {
-			if (this.visibility(landmarks[i].getPoint())) {
+		for (int i = 0; i < landmarks.length; i++)
+		{
+			if (this.visibility(landmarks[i].getPoint()))
+			{
 				visibleLandmarks.add(landmarks[i]);
 				landmarkNumber.add(i);
 				Location loc = landmarkSide(landmarks[i]);
@@ -82,11 +84,11 @@ public class PointPath {
 		return visibleLandmarks.size();
 	}
 
-	private Landmark getLandmarkType(int j) {
+	public Landmark getLandmarkType(int j) {
 		return visibleLandmarks.get(j);
 	}
 
-	private Location getLandmarkSide(int j) {
+	public Location getLandmarkSide(int j) {
 		return landmarkLocation.get(j);
 	}
 

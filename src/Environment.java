@@ -9,6 +9,11 @@ public class Environment {
 	int landmarkArraySize = 0;			
 	Landmark[] landmarkArray;		
 	
+	public Landmark[] getLandmarkArray()
+	{
+	 return landmarkArray;	
+	}
+	
 	Environment()
 	{
 		Random generator = new Random();
@@ -21,6 +26,7 @@ public class Environment {
 		
 		landmarkArray = new Landmark[landmarkArraySize];
 		
+
 		
 		for(int i = 0; i < landmarkArraySize; i++)
 		{

@@ -10,6 +10,14 @@ public class Language {
         public String[] LangArray = new String[20];
        
        
+        public void printToConsole()
+        {
+                for (int i = 0 ; i< 20; i++)
+                {
+                        System.out.println(LangArray[i]);
+                }
+        }
+       
         public void genLanguage(Path x){
                 int i = 0;
                 if (i == 0)
@@ -41,33 +49,33 @@ public class Language {
         }
        
         public void addStart(double x, double y){
-                String a = "Start(" + x + "," + y + ")";       
+                String a = "Start(" + x + "," + y + ")";      
                 LangArray[0] = a;
         }
        
         public void addLine(int direction, int curve, int iter, PointPath p){
                 String a = "";
-                if (curve < 0){
+                if ((curve > 0 && curve < 6) || curve == 10){
                         a = a + "STR(" + direction + ")";
                         a += addLandmarks(p);
                         LangArray[iter] = a;
                 }
-                if ((curve > 1 && curve < 2) && direction == 7 || direction == 8 || direction == 1 ){
+                if ((curve == 8) ){
                         a = a + "AGR(" + direction + ")";
                         a += addLandmarks(p);
                         LangArray[iter] = a;
                 }
-                if ((curve > 3 && curve < 4) && direction == 3 || direction == 4 || direction == 5 ){
+                if ((curve == 7)){
                         a = a + "AGL(" + direction + ")";
                         a += addLandmarks(p);
                         LangArray[iter] = a;
                 }
-                if ((curve > 4 ) && direction == 7 || direction == 8 || direction == 1 ){
+                if ((curve == 9 )){
                         a = a + "ASR(" + direction + ")";
                         a += addLandmarks(p);
                         LangArray[iter] = a;
                 }
-                if ((curve > 5 ) && direction == 3 || direction == 4 || direction == 5 ){
+                if ((curve == 6 )){
                         a = a + "ASL(" + direction + ")";
                         a += addLandmarks(p);
                         LangArray[iter] = a;
@@ -83,10 +91,13 @@ public class Language {
                 Landmark land = null;
                
                 int size = pp.getListSize();
+
                
                 for(int i = 0; i < size; i++)
                 {
-                        pp.getLandmark(loc, land, i);
+                        
+            			land = pp.getLandmarkType(i);
+            			loc = pp.getLandmarkSide(i);
                         if(loc == PointPath.Location.LEFT)
                         {
                                 side = "L";
@@ -189,4 +200,3 @@ public class Language {
         }
                
 }
-

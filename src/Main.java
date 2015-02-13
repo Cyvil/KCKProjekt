@@ -32,9 +32,16 @@ public class Main
 ////			System.out.println("Dla punktu " + i +" o wspó³rzêdnych:  x = " + path.Tables[i].getx() + " y = " + path.Tables[i].gety());
 ////			path.Tables[i].printLandmarks();
 //		}
-
+		
+		for(int i = 0; i < path.Tables.length; i++ )
+		{
+			path.Tables[i].setLandmarks(environment.getLandmarkArray());
+		}
 		
 		language = new Language(path);
+		
+		language.printToConsole();
+		
 		//tworzenie okna
 		Window Okno=new Window(path, environment);
 		
