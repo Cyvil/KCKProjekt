@@ -205,7 +205,7 @@ public class Window extends JFrame {
 				}
 
 				drawLandmarks(g2d, Srodowisko);
-				////////g2d.draw(path2); // rysowanie drogi
+				g2d.draw(path2); // rysowanie drogi
 //				for(int i=0;i<16;i++)
 //				{System.out.println(tab_sciezka[i][0]+" "+tab_sciezka[i][1]+" "+tab_sciezka[i][2]+" "+tab_sciezka[i][3]+" "+tab_sciezka[i][4]+" ");}
 				this.setVisible(true);
