@@ -58,9 +58,7 @@ public class PointPath {
 	}
 
 	public void setLandmarks(Landmark[] landmarks) {
-		visibleLandmarks = new ArrayList<Landmark>();
-		landmarkNumber = new ArrayList<Integer>();
-		landmarkLocation = new ArrayList<Location>();
+
 
 		for (int i = 0; i < landmarks.length; i++) {
 			if (this.visibility(landmarks[i].getPoint())) {
@@ -216,25 +214,28 @@ public class PointPath {
 
 	// Constructor
 	public PointPath(double a, double b, int c, double d, int e) {
+		visibleLandmarks = new ArrayList<Landmark>();
+		landmarkNumber = new ArrayList<Integer>();
+		landmarkLocation = new ArrayList<Location>();
+		
 		point = new Point(a, b);
 		type = c;
 		distance = d;
 		curve = e;
 	}
 
-	public void printLandmarks() {
-		int listSize = visibleLandmarks.size();
+//	public void printLandmarks() {
+//		int listSize = visibleLandmarks.size();
+//
+//		for (int i = 0; i < listSize; i++) {
+//			System.out.println("Widaæ landmarki: "
+//					+ this.visibleLandmarks.get(i).getType() + " o numerze :"
+//					+ this.landmarkNumber.get(i));
+//			System.out.println("o wspó³rzêdnych:  x = "
+//					+ this.visibleLandmarks.get(i).getPoint().getX() + " y = "
+//					+ this.visibleLandmarks.get(i).getPoint().getY());
+//			System.out.println("Po stronie " + this.landmarkLocation.get(i)
+//					+ " punktu");
+//		}
 
-		for (int i = 0; i < listSize; i++) {
-			System.out.println("Widaæ landmarki: "
-					+ this.visibleLandmarks.get(i).getType() + " o numerze :"
-					+ this.landmarkNumber.get(i));
-			System.out.println("o wspó³rzêdnych:  x = "
-					+ this.visibleLandmarks.get(i).getPoint().getX() + " y = "
-					+ this.visibleLandmarks.get(i).getPoint().getY());
-			System.out.println("Po stronie " + this.landmarkLocation.get(i)
-					+ " punktu");
-		}
-
-	}
 }

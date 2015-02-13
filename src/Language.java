@@ -98,6 +98,54 @@ public class Language {
 			{
 				a +=  "SGN(" + side + ")";
 			}
+			if(land.getType()==Landmark.Type.CAT) 
+			{
+				a +=  "CAT(" + side + ")";
+			}
+			if(land.getType()==Landmark.Type.BICYCLE) 
+			{
+				a +=  "BIC(" + side + ")";
+			}
+			if(land.getType()==Landmark.Type.CROSS) 
+			{
+				a +=  "CRS(" + side + ")";
+			}
+			if(land.getType()==Landmark.Type.DOG) 
+			{
+				a +=  "DOG(" + side + ")";
+			}
+			if(land.getType()==Landmark.Type.BENCH) 
+			{
+				a +=  "BEN(" + side + ")";
+			}
+			if(land.getType()==Landmark.Type.FLOWER) 
+			{
+				a +=  "FLW(" + side + ")";
+			}
+			if(land.getType()==Landmark.Type.FONT) 
+			{
+				a +=  "FNT(" + side + ")";
+			}
+			if(land.getType()==Landmark.Type.MAN) 
+			{
+				a +=  "MAN(" + side + ")";
+			}
+			if(land.getType()==Landmark.Type.BALL) 
+			{
+				a +=  "FLW(" + side + ")";
+			}
+			if(land.getType()==Landmark.Type.BIRD) 
+			{
+				a +=  "BRD(" + side + ")";
+			}
+			if(land.getType()==Landmark.Type.CAR) 
+			{
+				a +=  "CAR(" + side + ")";
+			}
+			if(land.getType()==Landmark.Type.BUSH) 
+			{
+				a +=  "BSH(" + side + ")";
+			}
 			
 		}
 		

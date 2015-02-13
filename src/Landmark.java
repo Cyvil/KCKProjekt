@@ -50,8 +50,8 @@ public class Landmark {
 	//Konstruktor, ustala typ a tak�e przypisan� do niego widoczno�� Landmarku
 	Landmark(int t, Point p)
 	{
-		
-		t = t % 21;
+		Random generator = new Random();
+		t = generator.nextInt(21);
 		
 		switch(t){
 		case 0:
