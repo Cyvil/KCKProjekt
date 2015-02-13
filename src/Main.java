@@ -5,6 +5,7 @@ public class Main
 
 	public static void main(String[] args)
 	{
+		Language language;
 		Path path = new Path();
 		
 //		for (int i = 0; i < 20; i++) {
@@ -31,30 +32,9 @@ public class Main
 ////			System.out.println("Dla punktu " + i +" o wspó³rzêdnych:  x = " + path.Tables[i].getx() + " y = " + path.Tables[i].gety());
 ////			path.Tables[i].printLandmarks();
 //		}
+
 		
-		for (int i = 0; i < 20; i++){
-			int k,z;
-			double xstart,ystart;
-			if(i == 0){
-				xstart = path.Tables[i].getx();
-				ystart = path.Tables[i].gety();
-				Language.addStart(xstart, ystart);
-			}
-	
-			k = path.Tables[i].gettype();
-			z = path.Tables[i].getcurve();
-			
-			Language.addLine(k,z,i,path.Tables[i]);
-			
-			
-		}
-		
-		for (int i = 0; i < 20; i++)
-		{
-			System.out.println(Language.LangArray[i]);
-		}
-		
-		
+		language = new Language(path);
 		//tworzenie okna
 		Window Okno=new Window(path, environment);
 		

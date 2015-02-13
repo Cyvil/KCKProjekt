@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class Path {
-	public PointPath[] Tables;
+	 PointPath[] Tables;
 	public boolean CheckOutsideMap(double x, double y) {
 		if (x>90||x<10||y>90||y<10) 
 			return true; 
@@ -14,6 +14,7 @@ public class Path {
 		
 	Random generator = new Random();
 	
+
 	Tables = new PointPath[20];
 	
 	//Punkt startowy
