@@ -30,14 +30,7 @@ public class Landmark {
 	private double visibilityRadius;
 	
 	private double collisionRadius;
-	
-/*	private enum Colour
-	{
-		WHITE, YELLOW, ORANGE, GREEN, BLUE, PURPLE, RED, BROWN, BLACK, GREY, 
-	}
-	*/
-//	Colour colour;
-	
+
 		Landmark()
 	{
 		position = new Point(50,50);
@@ -150,12 +143,12 @@ public class Landmark {
 	}
 	
 	//Widoczność - dla uproszczenia i realizmu zawsze jest jakby kołem wokół tego obiektu o promieniu visibilityRadius
-	//Żeby sprawdzić czy obiekt jest widoczny sprawdzamy jego odległość od punktu w którym stoimy 
-	//Jeżeli ta odległość jest mniejsza niż promień widoczności to wtedy obiekt jest "widoczny"
+	//Żeby sprawdzić czy obiekt jest widoczny sprawdzamy jego odległość od punktu w ktorym stoimy 
+	//Jeżeli ta odległość jest mniejsza niz promien widocznosci to wtedy obiekt jest "widoczny"
 	
 	boolean visibility(Point p)
 	{
-		double distance = Math.sqrt((position.getX() - p.getX())*(position.getX() - p.getX()) + (position.getY() - p.getY())*(position.getY() - p.getY()));
+		double distance = Math.sqrt((position.getX() - p.getX())*(position.getX() - p.getX()) + ((position.getY() - p.getY())*(position.getY() - p.getY())));
 		if (distance <= visibilityRadius)
 			return true;
 		else return false;
@@ -168,7 +161,7 @@ public class Landmark {
 	
 	boolean collision(Point p)
 	{
-		double distance = Math.sqrt((position.getX() - p.getX())*(position.getX() - p.getX()) + (position.getY() - p.getY())*(position.getY() - p.getY()));
+		double distance = Math.sqrt((position.getX() - p.getX())*(position.getX() - p.getX()) + ((position.getY() - p.getY())*(position.getY() - p.getY())));
 		if (distance <= collisionRadius)
 			return true;
 		else return false;

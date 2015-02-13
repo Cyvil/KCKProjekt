@@ -70,7 +70,7 @@ public class Environment {
 		Random generator = new Random();
                 while(landmarkArraySize < 15)
 		{
-			landmarkArraySize = generator.nextInt(21);
+			landmarkArraySize = generator.nextInt(19);
 		}
 		
 //		landmarkArraySize = 10;

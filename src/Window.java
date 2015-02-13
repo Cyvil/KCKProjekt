@@ -296,7 +296,7 @@ public class Window extends JFrame {
 			if (environment.landmarkArray[i].getType() == Landmark.Type.BENCH)
 				landmarki2d.drawImage(BENCH, a, b, 55, 55, this);
 
-			String s = Integer.toString(i);
+/*			String s = Integer.toString(i);
 			s += "l";
 			s += Integer.toString(a);
 			s += " ";
@@ -304,7 +304,7 @@ public class Window extends JFrame {
 			napis2d.setColor(Color.BLUE);
 			napis2d.drawString(s, a - 5, b - 5);
 			napis2d.setColor(Color.BLACK);
-
+*/
 		}
 		landmarki2d.finalize();
 		
